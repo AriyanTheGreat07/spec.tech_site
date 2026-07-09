@@ -533,33 +533,13 @@
       </h1>
 
       <p class="subtitle">
-        We're working on something exciting for <strong>[Category Name]</strong>
+        We're working on something exciting for <strong>TV's</strong>
       </p>
 
       <p class="description">
         Our team is building the most comprehensive spec database for this category. 
         Stay tuned for detailed comparisons, benchmarks, and expert insights.
       </p>
-
-      <!-- countdown timer -->
-      <div class="countdown">
-        <div class="countdown-item">
-          <div class="number" id="days">00</div>
-          <div class="label">Days</div>
-        </div>
-        <div class="countdown-item">
-          <div class="number" id="hours">00</div>
-          <div class="label">Hours</div>
-        </div>
-        <div class="countdown-item">
-          <div class="number" id="minutes">00</div>
-          <div class="label">Minutes</div>
-        </div>
-        <div class="countdown-item">
-          <div class="number" id="seconds">00</div>
-          <div class="label">Seconds</div>
-        </div>
-      </div>
 
       <!-- action buttons -->
       <div class="action-buttons">
@@ -582,10 +562,6 @@
     <div class="footer">
       <span><i class="far fa-copyright"></i> 2026 spec.tech — coming soon</span>
       <div class="footer-links">
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-github"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-        <a href="#"><i class="fab fa-discord"></i></a>
         <a href="#">About</a>
         <a href="#">Contact</a>
       </div>
@@ -594,39 +570,6 @@
   </div>
 
   <script>
-    // ----- countdown timer (set to 30 days from now) -----
-    (function() {
-      // Set target date: 30 days from now
-      const targetDate = new Date();
-      targetDate.setDate(targetDate.getDate() + 30);
-      targetDate.setHours(0, 0, 0, 0);
-
-      function updateCountdown() {
-        const now = new Date();
-        const diff = targetDate - now;
-
-        if (diff <= 0) {
-          document.getElementById('days').textContent = '00';
-          document.getElementById('hours').textContent = '00';
-          document.getElementById('minutes').textContent = '00';
-          document.getElementById('seconds').textContent = '00';
-          return;
-        }
-
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-        document.getElementById('days').textContent = String(days).padStart(2, '0');
-        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-      }
-
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
-    })();
 
     // ----- Newsletter signup -----
     document.querySelector('.newsletter-box button').addEventListener('click', function() {
