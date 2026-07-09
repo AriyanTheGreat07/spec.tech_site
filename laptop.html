@@ -655,12 +655,23 @@
 
     // ----- fetch data from /api/laptop_data.json -----
     function fetchDevices() {
-      In production, use this:
+      // In production, use this actual fetch:
       return fetch('/api/laptop_data.json')
         .then(res => {
-          if (!res.ok) throw new Error('Failed to fetch laptop data');
+          if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
           return res.json();
+        })
+        .then(data => {
+          // Handle both array and object with laptops property
+          if (Array.isArray(data)) {
+            return data;
+          } else if (data.laptops && Array.isArray(data.laptops)) {
+            return data.laptops;
+          } else {
+            throw new Error('Invalid data format: expected array or object with "laptops" array');
+          }
         });
+    }
 
     // ----- render cards -----
     function renderDevices(devices) {
@@ -674,20 +685,20 @@
 
       let html = '';
       devices.forEach(d => {
-        const tagsHtml = d.tags.map(t => `<span>${t}</span>`).join('');
-        const priceStr = d.currency + d.price.toLocaleString();
+        const tagsHtml = d.tags ? d.tags.map(t => `<span>${t}</span>`).join('') : '';
+        const priceStr = (d.currency || '$') + (d.price || 0).toLocaleString();
         const ownedBadge = d.personal_tests?.owned ? 
           `<span class="owned-badge"><i class="fas fa-check-circle"></i> owned</span>` : '';
         
         html += `
-          <div class="device-card" data-slug="${d.slug}">
+          <div class="device-card" data-slug="${d.slug || d.id}">
             <div class="card-icon"><i class="fas fa-laptop"></i></div>
-            <h3>${d.name} ${ownedBadge}</h3>
-            <div class="sub"><i class="fas fa-microchip"></i> ${d.cpu} · ${d.ram}</div>
+            <h3>${d.name || 'Unknown Device'} ${ownedBadge}</h3>
+            <div class="sub"><i class="fas fa-microchip"></i> ${d.cpu || 'N/A'} · ${d.ram || 'N/A'}</div>
             <div class="spec-tag">
-              <span>${d.display}</span>
-              <span>${d.gpu}</span>
-              <span>${d.storage}</span>
+              <span>${d.display || 'N/A'}</span>
+              <span>${d.gpu || 'N/A'}</span>
+              <span>${d.storage || 'N/A'}</span>
             </div>
             <div class="card-footer">
               <span class="price"><i class="fas fa-tag"></i> ${priceStr}</span>
@@ -705,8 +716,6 @@
           const slug = this.dataset.slug;
           // Navigate to detail page
           window.location.href = `/laptops/${slug}.html`;
-          // For demo, show alert
-          alert(`🔍 Navigate to /laptops/${slug}.html (detail page)`);
         });
       });
 
@@ -731,11 +740,11 @@
       if (currentSearch.trim() !== '') {
         const q = currentSearch.trim().toLowerCase();
         result = result.filter(d =>
-          d.name.toLowerCase().includes(q) ||
-          d.brand.toLowerCase().includes(q) ||
-          d.cpu.toLowerCase().includes(q) ||
-          d.display.toLowerCase().includes(q) ||
-          d.tags.some(t => t.toLowerCase().includes(q))
+          (d.name || '').toLowerCase().includes(q) ||
+          (d.brand || '').toLowerCase().includes(q) ||
+          (d.cpu || '').toLowerCase().includes(q) ||
+          (d.display || '').toLowerCase().includes(q) ||
+          (d.tags || []).some(t => t.toLowerCase().includes(q))
         );
       }
 
@@ -788,6 +797,7 @@
             <i class="fas fa-exclamation-triangle" style="font-size:1.8rem; display:block; margin-bottom:0.8rem;"></i>
             Failed to load devices from /api/laptop_data.json
             <br><span style="font-size:0.85rem; color:#8fa3be; margin-top:0.5rem; display:inline-block;">${error.message}</span>
+            <br><span style="font-size:0.8rem; color:#6f83a0; margin-top:0.5rem; display:inline-block;">Make sure the file exists at /api/laptop_data.json</span>
           </div>
         `;
       });
