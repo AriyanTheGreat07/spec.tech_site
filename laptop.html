@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>spec.tech — laptops (JSON demo)</title>
+  <title>spec.tech — laptop detail</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
       font-family: 'Inter', -apple-system, sans-serif;
       background: #080b10;
       color: #eef2f6;
-      line-height: 1.5;
+      line-height: 1.6;
       padding: 1.8rem 1.5rem 0;
       min-height: 100vh;
       display: flex;
@@ -27,6 +27,8 @@
       display: flex;
       flex-direction: column;
     }
+
+    /* header */
     .top-bar {
       display: flex;
       flex-wrap: wrap;
@@ -34,7 +36,7 @@
       justify-content: space-between;
       padding: 0.6rem 0 1.2rem;
       border-bottom: 1px solid #262e38;
-      margin-bottom: 2.2rem;
+      margin-bottom: 2rem;
     }
     .logo {
       display: flex;
@@ -86,299 +88,299 @@
       transform: scale(0.97);
       color: #0b0d10 !important;
     }
-    .page-header {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 2rem;
-      gap: 1rem;
+
+    /* breadcrumb */
+    .breadcrumb {
+      color: #6f83a0;
+      font-size: 0.8rem;
+      margin-bottom: 1.5rem;
     }
-    .page-header h1 {
+    .breadcrumb a {
+      color: #8ba0c0;
+      text-decoration: none;
+    }
+    .breadcrumb a:hover { color: #b7cbff; }
+    .breadcrumb i { font-size: 0.5rem; margin: 0 0.6rem; color: #475769; }
+
+    /* detail layout */
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* left column - photos & basic info */
+    .photo-gallery {
+      background: #11181f;
+      border-radius: 28px;
+      padding: 1.2rem;
+      border: 1px solid #262f3b;
+    }
+    .main-photo {
+      width: 100%;
+      aspect-ratio: 16/10;
+      background: #1a232e;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .main-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .thumbnails {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .thumbnails img {
+      width: 80px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid #262f3b;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+    .thumbnails img:hover {
+      border-color: #6c8cff;
+      transform: scale(1.02);
+    }
+    .owned-badge {
+      display: inline-block;
+      background: #1f3a2a;
+      color: #7bc9a0;
+      padding: 0.2rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      border: 1px solid #2d5a3d;
+      margin-top: 0.6rem;
+    }
+
+    /* right column - specs & details */
+    .detail-info h1 {
       font-size: 2.2rem;
       font-weight: 700;
       letter-spacing: -0.02em;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      margin-bottom: 0.2rem;
     }
-    .page-header h1 i { color: #6c8cff; font-size: 2rem; }
-    .page-header .sub { color: #99adc9; font-size: 0.95rem; font-weight: 400; }
-    .breadcrumb { color: #6f83a0; font-size: 0.8rem; }
-    .breadcrumb a { color: #8ba0c0; text-decoration: none; }
-    .breadcrumb a:hover { color: #b7cbff; }
-
-    .search-section {
-      background: #11181f;
-      border-radius: 40px;
-      padding: 1.2rem 1.8rem;
-      margin-bottom: 2.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      border: 1px solid #28313d;
-    }
-    .search-box {
-      display: flex;
-      align-items: center;
-      background: #1a232e;
-      border-radius: 60px;
-      padding: 0.2rem 0.2rem 0.2rem 1.5rem;
-      flex: 1 1 240px;
-      border: 1px solid #2f3a4a;
-    }
-    .search-box i { color: #6f7d8f; font-size: 0.9rem; }
-    .search-box input {
-      background: transparent;
-      border: none;
-      padding: 0.7rem 0.8rem;
-      font-size: 0.9rem;
-      width: 100%;
-      color: #eef2f6;
-      outline: none;
-      font-family: 'Inter', sans-serif;
-    }
-    .search-box input::placeholder { color: #5a6f89; }
-    .search-box button {
-      background: #6c8cff;
-      border: none;
-      border-radius: 40px;
-      padding: 0.5rem 1.4rem;
-      font-weight: 600;
-      font-size: 0.8rem;
-      color: #0b0d10;
-      cursor: pointer;
-      transition: 0.15s;
-      font-family: 'Inter', sans-serif;
-      white-space: nowrap;
-    }
-    .search-box button:hover { background: #7f9bff; transform: scale(0.97); }
-    .filter-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem 0.9rem;
-      align-items: center;
-    }
-    .filter-tabs span {
+    .detail-info .brand {
       color: #8fa3be;
-      font-size: 0.8rem;
-      font-weight: 500;
-      margin-right: 0.2rem;
-    }
-    .filter-tabs a {
-      color: #b8c8de;
-      text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 500;
-      padding: 0.25rem 0.8rem;
-      border-radius: 30px;
-      transition: 0.1s;
-      background: transparent;
-      border: 1px solid transparent;
-    }
-    .filter-tabs a:hover,
-    .filter-tabs a.active {
-      background: #26313f;
-      border-color: #3d4b60;
-      color: white;
-    }
-    .filter-tabs a i { margin-right: 4px; font-size: 0.65rem; color: #6a7a90; }
-
-    .section-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
       display: flex;
       align-items: center;
       gap: 10px;
-      letter-spacing: -0.01em;
-      color: #d0dcee;
-    }
-    .section-title i { color: #6c8cff; font-size: 1.2rem; }
-    .device-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.8rem;
-      margin-bottom: 3rem;
-    }
-    .device-card {
-      background: #121a22;
-      border-radius: 28px;
-      padding: 1.6rem 1.4rem 1.4rem;
-      border: 1px solid #262f3b;
-      transition: 0.2s ease;
-      display: flex;
-      flex-direction: column;
-      cursor: pointer;
-    }
-    .device-card:hover {
-      background: #1b232c;
-      border-color: #3d4857;
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.7);
-    }
-    .card-icon { font-size: 2rem; color: #7b93e6; margin-bottom: 0.4rem; }
-    .device-card h3 {
-      font-weight: 600;
-      font-size: 1.1rem;
-      letter-spacing: -0.01em;
-      color: #f0f4fc;
-      margin-bottom: 0.1rem;
-    }
-    .device-card .sub {
-      color: #97a4b9;
-      font-size: 0.8rem;
-      font-weight: 500;
-      margin-bottom: 0.6rem;
-      display: flex;
       flex-wrap: wrap;
-      gap: 6px;
     }
-    .device-card .sub i { margin-right: 2px; color: #5d6e84; }
-    .spec-tag {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem 0.5rem;
-      margin: 0.4rem 0 0.9rem;
-    }
-    .spec-tag span {
+    .detail-info .brand .price-tag {
       background: #1a2532;
-      padding: 0.2rem 0.7rem;
+      padding: 0.2rem 0.9rem;
       border-radius: 30px;
-      font-size: 0.7rem;
-      font-weight: 500;
-      color: #c8d2e2;
-      border: 1px solid #2f3a48;
-    }
-    .card-footer {
-      margin-top: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid #262f3b;
-      padding-top: 0.9rem;
-    }
-    .card-footer .price {
       font-weight: 600;
       color: #c6d2e8;
       font-size: 0.9rem;
+      border: 1px solid #2f3a48;
     }
-    .card-footer .price i { color: #7f97e0; margin-right: 4px; font-size: 0.7rem; }
-    .btn-compare {
-      background: transparent;
-      border: 1px solid #384353;
-      color: #bcc8dd;
-      padding: 0.25rem 0.9rem;
-      border-radius: 40px;
-      font-size: 0.7rem;
+    .detail-info .brand .price-tag i { color: #7f97e0; margin-right: 4px; }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem 1.2rem;
+      background: #11181f;
+      border-radius: 20px;
+      padding: 1.2rem 1.5rem;
+      border: 1px solid #262f3b;
+      margin: 1.2rem 0;
+    }
+    .spec-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.3rem 0;
+      border-bottom: 1px solid #1f2936;
+    }
+    .spec-item:last-child { border-bottom: none; }
+    .spec-item .label { color: #9aabbf; font-size: 0.8rem; }
+    .spec-item .value {
+      color: #e0e8f2;
+      font-weight: 500;
+      font-size: 0.85rem;
+      text-align: right;
+    }
+    .spec-item .value i { color: #6f8aff; margin-right: 4px; font-size: 0.7rem; }
+
+    .description {
+      color: #b0c2da;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin: 1.2rem 0;
+      background: #0e151d;
+      padding: 1.2rem 1.5rem;
+      border-radius: 16px;
+      border-left: 3px solid #6c8cff;
+    }
+
+    /* action buttons */
+    .action-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin: 1.2rem 0;
+    }
+    .btn-primary {
+      background: #6c8cff;
+      border: none;
+      padding: 0.6rem 1.8rem;
+      border-radius: 60px;
       font-weight: 600;
+      font-size: 0.9rem;
+      color: #0b0d10;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       cursor: pointer;
       transition: 0.15s;
       font-family: 'Inter', sans-serif;
+      text-decoration: none;
+    }
+    .btn-primary:hover { background: #7f9bff; transform: scale(0.97); }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #384353;
+      padding: 0.6rem 1.8rem;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #d0dcee;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: 0.15s;
+      font-family: 'Inter', sans-serif;
+      text-decoration: none;
+    }
+    .btn-outline:hover { background: #1f2938; border-color: #5d72a0; color: white; }
+
+    /* where to buy & sources */
+    .buy-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+      background: #11181f;
+      border-radius: 20px;
+      padding: 1.2rem 1.5rem;
+      border: 1px solid #262f3b;
+    }
+    .buy-section h3 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #8fa3be;
+      margin-bottom: 0.6rem;
+    }
+    .buy-section ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .buy-section ul li a {
+      color: #b0c4de;
+      text-decoration: none;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.15s;
+    }
+    .buy-section ul li a i { color: #5d7392; font-size: 0.6rem; }
+    .buy-section ul li a:hover { color: #ffffff; }
+    .buy-section ul li a:hover i { color: #8aa3e6; transform: translateX(3px); }
+
+    /* personal tests */
+    .personal-tests {
+      background: #11181f;
+      border-radius: 20px;
+      padding: 1.5rem;
+      border: 1px solid #262f3b;
+      margin: 1.5rem 0;
+    }
+    .personal-tests h3 {
+      font-size: 1rem;
+      font-weight: 600;
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 8px;
+      margin-bottom: 1rem;
     }
-    .btn-compare i { font-size: 0.6rem; }
-    .btn-compare:hover {
-      background: #2d3a4b;
-      border-color: #5b70a0;
-      color: white;
+    .personal-tests h3 i { color: #6c8cff; }
+    .test-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem 1.5rem;
     }
-    .loading-placeholder {
+    .test-item {
+      background: #0e151d;
+      padding: 0.6rem 1rem;
+      border-radius: 12px;
+      border: 1px solid #1f2936;
+      display: flex;
+      justify-content: space-between;
+    }
+    .test-item .label { color: #9aabbf; font-size: 0.8rem; }
+    .test-item .value {
+      color: #e0e8f2;
+      font-weight: 500;
+      font-size: 0.8rem;
+    }
+    .test-notes {
+      margin-top: 1rem;
+      background: #0e151d;
+      padding: 0.8rem 1.2rem;
+      border-radius: 12px;
+      border-left: 3px solid #6c8cff;
+      color: #b0c2da;
+      font-size: 0.85rem;
+    }
+    .test-notes i { color: #6c8cff; margin-right: 6px; }
+    .camera-test {
+      grid-column: 1 / -1;
+      background: #0e151d;
+      padding: 0.6rem 1rem;
+      border-radius: 12px;
+      border: 1px solid #1f2936;
+    }
+    .camera-test .label { color: #9aabbf; font-size: 0.8rem; display: block; }
+    .camera-test .value { color: #e0e8f2; font-size: 0.85rem; margin-top: 2px; }
+
+    /* loading state */
+    .loading-state {
       grid-column: 1 / -1;
       text-align: center;
       padding: 3rem 0;
       color: #8fa3be;
     }
-    .loading-placeholder i { font-size: 2rem; margin-bottom: 0.8rem; display: block; color: #6c8cff; }
+    .loading-state i { font-size: 2.5rem; display: block; margin-bottom: 1rem; color: #6c8cff; }
 
-    /* demo JSON viewer */
-    .json-demo {
-      background: #0e151d;
-      border: 1px solid #26303d;
-      border-radius: 24px;
-      padding: 1.5rem 1.8rem;
-      margin: 2rem 0 3rem;
+    /* error state */
+    .error-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem 0;
+      color: #e06c7c;
     }
-    .json-demo h3 {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.8rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #b0c4de;
-    }
-    .json-demo h3 i { color: #6c8cff; }
-    .json-demo pre {
-      background: #0b1119;
-      padding: 1.2rem 1.5rem;
-      border-radius: 16px;
-      overflow-x: auto;
-      font-size: 0.75rem;
-      font-family: 'JetBrains Mono', 'Fira Code', monospace;
-      color: #cdd9ed;
-      border: 1px solid #1e2936;
-      max-height: 420px;
-      overflow-y: auto;
-      white-space: pre-wrap;
-      word-break: break-word;
-    }
-    .json-demo .badge {
-      display: inline-block;
-      background: #1f2a38;
-      padding: 0.2rem 0.8rem;
-      border-radius: 40px;
-      font-size: 0.65rem;
-      font-weight: 600;
-      color: #8ba3c7;
-      margin-left: 0.6rem;
-      border: 1px solid #2f3d50;
-    }
+    .error-state i { font-size: 2.5rem; display: block; margin-bottom: 1rem; }
 
-    .compare-section {
-      background: #11181f;
-      border-radius: 32px;
-      padding: 1.8rem 2rem;
-      margin-top: 0.5rem;
-      border: 1px solid #29313c;
-    }
-    .compare-header {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.2rem;
-    }
-    .compare-header h2 {
-      font-weight: 600;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .compare-header h2 i { color: #6c8cff; }
-    .compare-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 0.8rem;
-      font-size: 0.85rem;
-    }
-    .compare-item {
-      background: #1c2530;
-      padding: 0.7rem 1rem;
-      border-radius: 20px;
-      display: flex;
-      justify-content: space-between;
-      border: 1px solid #2b3645;
-    }
-    .compare-item .label { color: #9aabbf; }
-    .compare-item .value { font-weight: 500; color: #e0e8f2; }
-    .compare-item .value i { margin-right: 4px; color: #6f8aff; font-size: 0.7rem; }
-
+    /* footer */
     .footer-detailed {
       margin-top: 3.5rem;
       border-top: 1px solid #222c38;
@@ -501,19 +503,21 @@
     .footer-bottom-links a:hover { color: #b7cbff; }
 
     @media (max-width: 850px) {
+      .detail-grid { grid-template-columns: 1fr; gap: 1.5rem; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
       .footer-brand { grid-column: 1 / -1; }
-      .compare-grid { grid-template-columns: 1fr 1fr; }
+      .specs-grid { grid-template-columns: 1fr; }
+      .test-grid { grid-template-columns: 1fr; }
+      .buy-section { grid-template-columns: 1fr; }
     }
     @media (max-width: 550px) {
       .footer-grid { grid-template-columns: 1fr; gap: 1.8rem; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
       .footer-bottom-links a { margin-left: 0; margin-right: 1.2rem; }
       .top-bar { flex-direction: column; align-items: stretch; gap: 0.8rem; }
-      .compare-grid { grid-template-columns: 1fr; }
-      .search-section { flex-direction: column; align-items: stretch; padding: 1.2rem; }
-      .page-header h1 { font-size: 1.6rem; }
-      .json-demo pre { font-size: 0.65rem; padding: 0.8rem; }
+      .detail-info h1 { font-size: 1.6rem; }
+      .action-buttons { flex-direction: column; }
+      .btn-primary, .btn-outline { justify-content: center; }
     }
   </style>
 </head>
@@ -527,85 +531,28 @@
       <span>spec.tech</span>
     </div>
     <div class="nav-links">
-      <a href="/laptops"><i class="fas fa-laptop"></i> Laptops</a>
-      <a href="/tv"><i class="fas fa-tv"></i> TVs</a>
-      <a href="/tablets"><i class="fas fa-tablet-alt"></i> Tablets</a>
-      <a href="/vr"><i class="fas fa-vr-cardboard"></i> VR</a>
-      <a href="/consoles"><i class="fas fa-gamepad"></i> Consoles</a>
-      <a href="/desktop"><i class="fas fa-desktop"></i> PCs</a>
-      <a href="/compare" class="nav-cta"><i class="fas fa-arrow-right"></i> Compare</a>
+      <a href="#"><i class="fas fa-laptop"></i> Laptops</a>
+      <a href="#"><i class="fas fa-tv"></i> TVs</a>
+      <a href="#"><i class="fas fa-tablet-alt"></i> Tablets</a>
+      <a href="#"><i class="fas fa-vr-cardboard"></i> VR</a>
+      <a href="#"><i class="fas fa-gamepad"></i> Consoles</a>
+      <a href="#"><i class="fas fa-desktop"></i> PCs</a>
+      <a href="#" class="nav-cta"><i class="fas fa-arrow-right"></i> Compare</a>
     </div>
   </header>
 
-  <!-- page header -->
-  <div class="page-header">
-    <div>
-      <h1><i class="fas fa-laptop"></i> Laptops</h1>
-      <div class="sub">Rich JSON data — includes descriptions, sources, buying links, photos & personal tests</div>
-    </div>
-    <div class="breadcrumb">
-      <a href="/">Home</a> <i class="fas fa-chevron-right" style="font-size:0.5rem; margin:0 6px; color:#475769;"></i>
-      <span style="color:#b0c4de;">Laptops</span>
-    </div>
+  <!-- breadcrumb -->
+  <div class="breadcrumb">
+    <a href="#">Home</a> <i class="fas fa-chevron-right"></i>
+    <a href="#">Laptops</a> <i class="fas fa-chevron-right"></i>
+    <span style="color:#b0c4de;" id="breadcrumbName">Loading...</span>
   </div>
 
-  <!-- search & filter -->
-  <div class="search-section">
-    <div class="search-box">
-      <i class="fas fa-search"></i>
-      <input type="text" id="searchInput" placeholder="Search laptops...">
-      <button id="searchBtn"><i class="fas fa-arrow-right"></i> Search</button>
-    </div>
-    <div class="filter-tabs">
-      <span><i class="fas fa-sliders-h"></i> Filter:</span>
-      <a href="#" class="active" data-filter="all">All</a>
-      <a href="#" data-filter="gaming"><i class="fas fa-bolt"></i> Gaming</a>
-      <a href="#" data-filter="ultrabook"><i class="fas fa-briefcase"></i> Ultrabook</a>
-      <a href="#" data-filter="creator"><i class="fas fa-star"></i> Creator</a>
-    </div>
-  </div>
-
-  <!-- grid -->
-  <div class="section-title">
-    <i class="fas fa-laptop"></i> <span id="gridTitle">laptops</span>
-  </div>
-  <div class="device-grid" id="deviceGrid">
-    <div class="loading-placeholder">
+  <!-- detail content -->
+  <div class="detail-grid" id="detailGrid">
+    <div class="loading-state" id="loadingState">
       <i class="fas fa-spinner fa-pulse"></i>
-      loading devices...
-    </div>
-  </div>
-
-  <!-- ===== DEMO JSON ===== -->
-  <div class="json-demo">
-    <h3><i class="fas fa-code"></i> demo JSON structure <span class="badge">rich data</span></h3>
-    <pre id="jsonPreview">Loading JSON preview...</pre>
-  </div>
-
-  <!-- compare -->
-  <div class="compare-section">
-    <div class="compare-header">
-      <h2><i class="fas fa-arrows-left-right"></i> quick compare</h2>
-      <span style="color:#7b8da5; font-size:0.8rem;"><i class="far fa-clock"></i> 2 devices selected</span>
-    </div>
-    <div class="compare-grid">
-      <div class="compare-item"><span class="label">Model</span><span class="value">ZenBook Pro 16</span></div>
-      <div class="compare-item"><span class="label">Model</span><span class="value">MacBook Pro 16</span></div>
-      <div class="compare-item"><span class="label">Display</span><span class="value">16" OLED 4K</span></div>
-      <div class="compare-item"><span class="label">Display</span><span class="value">16" Mini-LED</span></div>
-      <div class="compare-item"><span class="label">Processor</span><span class="value"><i class="fas fa-microchip"></i> Core Ultra 9</span></div>
-      <div class="compare-item"><span class="label">Processor</span><span class="value"><i class="fas fa-microchip"></i> M4 Pro</span></div>
-      <div class="compare-item"><span class="label">RAM</span><span class="value">32GB</span></div>
-      <div class="compare-item"><span class="label">RAM</span><span class="value">36GB</span></div>
-      <div class="compare-item"><span class="label">GPU</span><span class="value">RTX 4070</span></div>
-      <div class="compare-item"><span class="label">GPU</span><span class="value">Integrated</span></div>
-      <div class="compare-item"><span class="label">Price</span><span class="value">$2,299</span></div>
-      <div class="compare-item"><span class="label">Price</span><span class="value">$2,499</span></div>
-    </div>
-    <div style="margin-top: 1.2rem; font-size: 0.85rem; color: #68778e; display: flex; gap: 1.2rem; flex-wrap: wrap;">
-      <span><i class="fas-regular fa-square-check" style="color:#6c8cff;"></i>  add more devices</span>
-      <span><i class="fas-regular fa-chart-simple"></i>  full comparison</span>
-      <span><i class="fas-regular fa-share-nodes"></i>  share</span>
+      Loading device data from /api/laptop_data.json...
     </div>
   </div>
 
@@ -671,176 +618,284 @@
 
 <script>
   (function() {
-
-    // ----- DOM refs -----
-    const grid = document.getElementById('deviceGrid');
-    const searchInput = document.getElementById('searchInput');
-    const searchBtn = document.getElementById('searchBtn');
-    const filterLinks = document.querySelectorAll('.filter-tabs a');
-    const gridTitle = document.getElementById('gridTitle');
-    const jsonPreview = document.getElementById('jsonPreview');
-
-    let currentFilter = 'all';
-    let currentSearch = '';
-
-    // ----- render JSON preview (first device as example) -----
-    function renderJsonPreview() {
-      if (LAPTOP_DATA.length > 0) {
-        const example = LAPTOP_DATA[0];
-        // show a rich snippet
-        const preview = {
-          "id": example.id,
-          "name": example.name,
-          "description": example.description,
-          "sources": example.sources,
-          "where_to_buy": example.where_to_buy,
-          "photos": example.photos,
-          "personal_tests": {
-            "owned": example.personal_tests.owned,
-            "benchmarks": example.personal_tests.benchmarks,
-            "camera_tests": example.personal_tests.camera_tests,
-            "notes": example.personal_tests.notes
-          }
-        };
-        jsonPreview.textContent = JSON.stringify(preview, null, 2);
-      } else {
-        jsonPreview.textContent = '// no data available';
+    // ----- get device slug from URL -----
+    function getSlugFromUrl() {
+      const path = window.location.pathname;
+      const segments = path.split('/').filter(Boolean);
+      // Expected: /laptops/zenbook-pro-16.html or /laptops/zenbook-pro-16
+      if (segments.length >= 2 && segments[0] === 'laptops') {
+        const last = segments[segments.length - 1];
+        return last.replace(/\.html$/, ''); // remove .html if present
       }
+      // fallback: try to get from query param ?slug=xyz
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('slug')) return params.get('slug');
+      return null;
     }
 
-    // ----- render cards -----
-    function renderDevices(devices) {
-      if (!devices || devices.length === 0) {
-        grid.innerHTML = `<div class="loading-placeholder" style="grid-column:1/-1; padding:2rem 0;">
-          <i class="fas fa-search" style="font-size:1.8rem; color:#6c8cff; display:block; margin-bottom:0.6rem;"></i>
-          No laptops found. Try adjusting your search or filter.
-        </div>`;
+    const slug = getSlugFromUrl();
+    const detailGrid = document.getElementById('detailGrid');
+
+    // ----- fetch data from /api/laptop_data.json -----
+    function fetchLaptopData() {
+      // In a real app, you'd fetch from the actual endpoint
+      // For demo, we'll use a Promise that resolves with sample data
+      // but simulate the fetch call to /api/laptop_data.json
+      
+      // SAMPLE DATA (matches the structure expected)
+      const SAMPLE_DATA = {
+        "id": 1,
+        "slug": "zenbook-pro-16",
+        "name": "ZenBook Pro 16",
+        "brand": "ASUS",
+        "category": "creator",
+        "price": 2299,
+        "currency": "$",
+        "cpu": "Intel Core Ultra 9 285H",
+        "ram": "32GB LPDDR5X",
+        "storage": "1TB NVMe SSD",
+        "display": "16\" OLED 4K (3840x2400) 120Hz",
+        "gpu": "NVIDIA RTX 4070 Laptop 8GB",
+        "battery": "96Wh, up to 12h",
+        "weight": "1.9 kg",
+        "tags": ["OLED", "4K", "RTX", "creator"],
+        "description": "The ZenBook Pro 16 is a powerhouse for creators and professionals. With a stunning 4K OLED display, Intel Core Ultra 9 processor, and RTX 4070 graphics, it handles 8K video editing, 3D rendering, and AI workloads with ease. The 96Wh battery keeps you going all day, and the build quality is exceptional.",
+        "sources": [
+          { "name": "ASUS official", "url": "https://www.asus.com/laptops/zenbook-pro-16/" },
+          { "name": "TechRadar review", "url": "https://www.techradar.com/reviews/asus-zenbook-pro-16" },
+          { "name": "Notebookcheck", "url": "https://www.notebookcheck.com/zenbook-pro-16" }
+        ],
+        "where_to_buy": [
+          { "name": "Amazon", "url": "https://www.amazon.com/dp/B0XYZ" },
+          { "name": "Best Buy", "url": "https://www.bestbuy.com/site/zenbook-pro-16" },
+          { "name": "ASUS Store", "url": "https://store.asus.com/zenbook-pro-16" },
+          { "name": "Newegg", "url": "https://www.newegg.com/zenbook-pro-16" }
+        ],
+        "photos": [
+          "https://images.unsplash.com/photo-1593642702909-dec73df255d7?w=600&h=400&fit=crop",
+          "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&h=400&fit=crop",
+          "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=600&h=400&fit=crop",
+          "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&h=400&fit=crop"
+        ],
+        "personal_tests": {
+          "owned": true,
+          "purchase_date": "2025-11-15",
+          "benchmarks": {
+            "Cinebench R24 (multi)": 1860,
+            "Cinebench R24 (single)": 132,
+            "Geekbench 6 (multi)": 18450,
+            "Geekbench 6 (single)": 2950,
+            "3DMark Time Spy": 12800,
+            "SSD read (MB/s)": 7100,
+            "SSD write (MB/s)": 6800
+          },
+          "camera_tests": {
+            "Webcam": "1080p IR, good low-light performance, auto-framing works well. Colors are accurate.",
+            "External camera (Sony A7IV)": "Tested via HDMI capture — no latency issues, great for streaming."
+          },
+          "notes": "The OLED panel is incredible for colour work. Fan noise is noticeable under full load but acceptable. Battery life ~8h with mixed use. The keyboard is comfortable for long typing sessions."
+        }
+      };
+
+      // In production, uncomment this:
+      // return fetch('/api/laptop_data.json')
+      //   .then(res => {
+      //     if (!res.ok) throw new Error('Failed to fetch laptop data');
+      //     return res.json();
+      //   })
+      //   .then(data => {
+      //     if (!Array.isArray(data)) throw new Error('Invalid data format: expected array');
+      //     return data;
+      //   });
+
+      // For demo, we simulate the fetch with a delay
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          // Return an array with our sample data
+          resolve([SAMPLE_DATA]);
+        }, 600);
+      });
+    }
+
+    // ----- render detail page -----
+    function renderDetail(device) {
+      // breadcrumb
+      document.getElementById('breadcrumbName').textContent = device.name;
+
+      // build the detail grid HTML
+      const priceStr = device.currency + device.price.toLocaleString();
+      
+      // specs
+      const specItems = [
+        { label: 'CPU', value: device.cpu },
+        { label: 'RAM', value: device.ram },
+        { label: 'Storage', value: device.storage },
+        { label: 'Display', value: device.display },
+        { label: 'GPU', value: device.gpu },
+        { label: 'Battery', value: device.battery || 'N/A' },
+        { label: 'Weight', value: device.weight || 'N/A' },
+        { label: 'Tags', value: device.tags.join(' · ') }
+      ];
+
+      // photos
+      const photosHtml = device.photos && device.photos.length > 0 ? 
+        device.photos.map(photo => 
+          `<img src="${photo}" alt="thumbnail" onclick="document.getElementById('mainPhotoImg').src='${photo}'">`
+        ).join('') : 
+        '<span style="color:#6f83a0; font-size:0.8rem;">No photos available</span>';
+
+      // owned badge
+      const ownedHtml = device.personal_tests?.owned ? 
+        `<span class="owned-badge"><i class="fas fa-check-circle"></i> Personally owned</span>` : '';
+
+      // where to buy
+      const buyHtml = device.where_to_buy && device.where_to_buy.length > 0 ?
+        device.where_to_buy.map(item => 
+          `<li><a href="${item.url}" target="_blank"><i class="fas fa-chevron-right"></i> ${item.name}</a></li>`
+        ).join('') :
+        '<li style="color:#6f83a0; font-size:0.85rem;">No retailers listed</li>';
+
+      // sources
+      const sourcesHtml = device.sources && device.sources.length > 0 ?
+        device.sources.map(item => 
+          `<li><a href="${item.url}" target="_blank"><i class="fas fa-chevron-right"></i> ${item.name}</a></li>`
+        ).join('') :
+        '<li style="color:#6f83a0; font-size:0.85rem;">No sources listed</li>';
+
+      // personal tests
+      let testsHtml = '';
+      const pt = device.personal_tests;
+      if (pt) {
+        // benchmarks
+        if (pt.benchmarks && Object.keys(pt.benchmarks).length > 0) {
+          testsHtml += `<div style="margin-bottom:0.8rem;"><strong style="color:#b0c4de; font-size:0.85rem;">📊 Benchmarks</strong>
+            <div class="test-grid" style="margin-top:0.4rem;">`;
+          Object.entries(pt.benchmarks).forEach(([key, value]) => {
+            testsHtml += `<div class="test-item"><span class="label">${key}</span><span class="value">${value}</span></div>`;
+          });
+          testsHtml += `</div></div>`;
+        }
+
+        // camera tests
+        if (pt.camera_tests) {
+          testsHtml += `<div style="margin-bottom:0.8rem;"><strong style="color:#b0c4de; font-size:0.85rem;">📷 Camera tests</strong>`;
+          Object.entries(pt.camera_tests).forEach(([key, value]) => {
+            testsHtml += `<div class="camera-test"><span class="label">${key}</span><div class="value">${value}</div></div>`;
+          });
+          testsHtml += `</div>`;
+        }
+
+        // notes
+        if (pt.notes) {
+          testsHtml += `<div class="test-notes"><i class="fas fa-sticky-note"></i> ${pt.notes}</div>`;
+        }
+
+        // purchase date
+        if (pt.purchase_date) {
+          testsHtml += `<div style="margin-top:0.6rem; font-size:0.8rem; color:#6f83a0;"><i class="far fa-calendar-alt"></i> Purchased: ${pt.purchase_date}</div>`;
+        }
+      }
+
+      const html = `
+        <!-- left: photos -->
+        <div class="photo-gallery">
+          <div class="main-photo">
+            <img src="${device.photos && device.photos.length > 0 ? device.photos[0] : 'https://via.placeholder.com/600x400/1a232e/6f83a0?text=No+Image'}" alt="main photo" id="mainPhotoImg">
+          </div>
+          <div class="thumbnails">
+            ${photosHtml}
+          </div>
+          ${ownedHtml}
+        </div>
+
+        <!-- right: info -->
+        <div class="detail-info">
+          <h1>${device.name}</h1>
+          <div class="brand">
+            <span>${device.brand}</span>
+            <span class="price-tag"><i class="fas fa-tag"></i> ${priceStr}</span>
+            <span style="background:#1a2532; padding:0.2rem 0.8rem; border-radius:30px; font-size:0.7rem; border:1px solid #2f3a48;">${device.category}</span>
+          </div>
+
+          <div class="specs-grid">
+            ${specItems.map(item => 
+              `<div class="spec-item"><span class="label">${item.label}</span><span class="value">${item.value}</span></div>`
+            ).join('')}
+          </div>
+
+          <div class="description">${device.description}</div>
+
+          <div class="action-buttons">
+            <a href="#" class="btn-primary"><i class="fas fa-arrows-left-right"></i> Compare</a>
+            <a href="#" class="btn-outline"><i class="fas fa-share-alt"></i> Share</a>
+            <a href="#" class="btn-outline"><i class="fas fa-flag"></i> Report</a>
+          </div>
+
+          <div class="buy-section">
+            <div>
+              <h3><i class="fas fa-shopping-cart"></i> Where to buy</h3>
+              <ul>${buyHtml}</ul>
+            </div>
+            <div>
+              <h3><i class="fas fa-link"></i> Sources</h3>
+              <ul>${sourcesHtml}</ul>
+            </div>
+          </div>
+
+          <div class="personal-tests">
+            <h3><i class="fas fa-flask"></i> Personal tests</h3>
+            ${testsHtml || '<p style="color:#6f83a0; font-size:0.9rem;">No personal test data available.</p>'}
+          </div>
+        </div>
+      `;
+
+      detailGrid.innerHTML = html;
+    }
+
+    // ----- show error -----
+    function showError(message) {
+      detailGrid.innerHTML = `
+        <div class="error-state">
+          <i class="fas fa-exclamation-triangle"></i>
+          <h2 style="font-weight:600; margin-bottom:0.5rem;">Failed to load device</h2>
+          <p style="color:#9aabbf;">${message}</p>
+          <p style="color:#6f83a0; font-size:0.85rem; margin-top:0.5rem;">Try refreshing the page or go back to <a href="#" style="color:#6c8cff; text-decoration:none;">laptops</a></p>
+        </div>
+      `;
+    }
+
+    // ----- load data -----
+    function loadDevice() {
+      if (!slug) {
+        showError('No device specified. Please provide a valid device slug.');
         return;
       }
 
-      let html = '';
-      devices.forEach(d => {
-        const tagsHtml = d.tags.map(t => `<span>${t}</span>`).join('');
-        const priceStr = d.currency + d.price.toLocaleString();
-        // show a badge if personally owned
-        const ownedBadge = d.personal_tests?.owned ? ' <span style="background:#1f3a2a; color:#7bc9a0; font-size:0.6rem; padding:0.1rem 0.5rem; border-radius:30px; border:1px solid #2d5a3d;">✔ owned</span>' : '';
-        html += `
-          <div class="device-card" data-id="${d.id}" data-slug="${d.slug}">
-            <div class="card-icon"><i class="fas fa-laptop"></i></div>
-            <h3>${d.name} ${ownedBadge}</h3>
-            <div class="sub"><i class="fas fa-microchip"></i> ${d.cpu} · ${d.ram}</div>
-            <div class="spec-tag">
-              <span>${d.display}</span>
-              <span>${d.gpu}</span>
-              <span>${d.storage}</span>
-            </div>
-            <div class="card-footer">
-              <span class="price"><i class="fas fa-tag"></i> ${priceStr}</span>
-              <button class="btn-compare" data-compare-id="${d.id}"><i class="fas fa-arrows-left-right"></i> compare</button>
-            </div>
-          </div>
-        `;
-      });
-      grid.innerHTML = html;
-
-      // card click → show detail (demo)
-      document.querySelectorAll('.device-card').forEach(card => {
-        card.addEventListener('click', function(e) {
-          if (e.target.closest('.btn-compare')) return;
-          const slug = this.dataset.slug;
-          const device = LAPTOP_DATA.find(d => d.slug === slug);
-          if (device) {
-            // show a rich detail popup / navigation demo
-            alert(
-              `📱 DETAIL PAGE: /laptops/${slug}.html\n\n` +
-              `Brand: ${device.brand}\n` +
-              `CPU: ${device.cpu}\n` +
-              `RAM: ${device.ram}\n` +
-              `Display: ${device.display}\n` +
-              `GPU: ${device.gpu}\n` +
-              `Battery: ${device.battery || 'N/A'}\n` +
-              `Weight: ${device.weight || 'N/A'}\n\n` +
-              `📝 Description: ${device.description.substring(0, 120)}...\n\n` +
-              `🔗 Sources: ${device.sources.map(s => s.name).join(', ')}\n` +
-              `🛒 Where to buy: ${device.where_to_buy.map(s => s.name).join(', ')}\n\n` +
-              `🧪 Personal tests: ${device.personal_tests?.owned ? '✅ Owned' : '❌ Not owned'}\n` +
-              `📊 Benchmarks: ${Object.entries(device.personal_tests?.benchmarks || {}).map(([k,v]) => `${k}: ${v}`).join(', ')}\n` +
-              `📷 Camera: ${device.personal_tests?.camera_tests?.Webcam || 'N/A'}\n` +
-              `📝 Notes: ${device.personal_tests?.notes || 'N/A'}`
-            );
-          } else {
-            alert(`🔍 Navigate to /laptops/${slug}.html (detail page)`);
+      fetchLaptopData()
+        .then(devices => {
+          if (!Array.isArray(devices) || devices.length === 0) {
+            throw new Error('No devices found in data');
           }
+          
+          // Find the device matching the slug
+          const device = devices.find(d => d.slug === slug);
+          if (!device) {
+            throw new Error(`Device with slug "${slug}" not found`);
+          }
+          
+          renderDetail(device);
+        })
+        .catch(error => {
+          console.error('Error loading device:', error);
+          showError(error.message || 'Failed to load device data from /api/laptop_data.json');
         });
-      });
-
-      // compare buttons
-      document.querySelectorAll('.btn-compare').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          e.stopPropagation();
-          const id = this.dataset.compareId;
-          alert(`➕ Added laptop ID ${id} to comparison (demo)`);
-        });
-      });
     }
-
-    // ----- filter + search -----
-    function getFilteredDevices() {
-      let result = LAPTOP_DATA.slice();
-      if (currentFilter !== 'all') {
-        result = result.filter(d => d.category === currentFilter);
-      }
-      if (currentSearch.trim() !== '') {
-        const q = currentSearch.trim().toLowerCase();
-        result = result.filter(d =>
-          d.name.toLowerCase().includes(q) ||
-          d.brand.toLowerCase().includes(q) ||
-          d.cpu.toLowerCase().includes(q) ||
-          d.display.toLowerCase().includes(q) ||
-          d.tags.some(t => t.toLowerCase().includes(q))
-        );
-      }
-      return result;
-    }
-
-    function updateGrid() {
-      const filtered = getFilteredDevices();
-      renderDevices(filtered);
-      let label = 'laptops';
-      if (currentFilter !== 'all') label = currentFilter + ' laptops';
-      if (currentSearch.trim()) label = `“${currentSearch.trim()}” results`;
-      gridTitle.textContent = label;
-    }
-
-    // ----- event listeners -----
-    filterLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        filterLinks.forEach(l => l.classList.remove('active'));
-        this.classList.add('active');
-        currentFilter = this.dataset.filter || 'all';
-        updateGrid();
-      });
-    });
-
-    function performSearch() {
-      currentSearch = searchInput.value;
-      updateGrid();
-    }
-    searchBtn.addEventListener('click', performSearch);
-    searchInput.addEventListener('keyup', function(e) {
-      if (e.key === 'Enter') performSearch();
-    });
 
     // ----- init -----
-    renderJsonPreview();
-    grid.innerHTML = `<div class="loading-placeholder"><i class="fas fa-spinner fa-pulse"></i> loading devices...</div>`;
-    setTimeout(() => {
-      renderDevices(LAPTOP_DATA);
-      gridTitle.textContent = 'laptops';
-    }, 350);
+    loadDevice();
 
-    window.__laptopData = LAPTOP_DATA;
+    // expose for debugging
+    window.__slug = slug;
   })();
 </script>
 </body>
