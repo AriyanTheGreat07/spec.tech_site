@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>spec.tech — Coming Soon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #080b10;
+      color: #eef2f6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* animated background */
+    .bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .bg-animation .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.3;
+      animation: floatOrb 20s infinite ease-in-out;
+    }
+    .bg-animation .orb:nth-child(1) {
+      width: 400px;
+      height: 400px;
+      background: #6c8cff;
+      top: -100px;
+      left: -100px;
+      animation-delay: 0s;
+    }
+    .bg-animation .orb:nth-child(2) {
+      width: 500px;
+      height: 500px;
+      background: #8b5cf6;
+      bottom: -150px;
+      right: -150px;
+      animation-delay: -7s;
+    }
+    .bg-animation .orb:nth-child(3) {
+      width: 300px;
+      height: 300px;
+      background: #06b6d4;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation-delay: -14s;
+    }
+    .bg-animation .orb:nth-child(4) {
+      width: 200px;
+      height: 200px;
+      background: #f59e0b;
+      top: 20%;
+      right: 10%;
+      animation-delay: -5s;
+    }
+    .bg-animation .orb:nth-child(5) {
+      width: 250px;
+      height: 250px;
+      background: #ec4899;
+      bottom: 20%;
+      left: 10%;
+      animation-delay: -10s;
+    }
+
+    @keyframes floatOrb {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(50px, -80px) scale(1.1); }
+      50% { transform: translate(-30px, 60px) scale(0.9); }
+      75% { transform: translate(80px, 40px) scale(1.05); }
+    }
+
+    /* floating particles */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: #6c8cff;
+      border-radius: 50%;
+      opacity: 0;
+      animation: particleFloat 15s infinite ease-in-out;
+    }
+    .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .particle:nth-child(2) { left: 20%; animation-delay: 2s; }
+    .particle:nth-child(3) { left: 30%; animation-delay: 4s; }
+    .particle:nth-child(4) { left: 40%; animation-delay: 1s; }
+    .particle:nth-child(5) { left: 50%; animation-delay: 3s; }
+    .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
+    .particle:nth-child(7) { left: 70%; animation-delay: 0.5s; }
+    .particle:nth-child(8) { left: 80%; animation-delay: 2.5s; }
+    .particle:nth-child(9) { left: 90%; animation-delay: 4.5s; }
+    .particle:nth-child(10) { left: 15%; animation-delay: 1.5s; }
+    .particle:nth-child(11) { left: 35%; animation-delay: 3.5s; }
+    .particle:nth-child(12) { left: 55%; animation-delay: 0.8s; }
+    .particle:nth-child(13) { left: 75%; animation-delay: 2.8s; }
+    .particle:nth-child(14) { left: 85%; animation-delay: 4.2s; }
+    .particle:nth-child(15) { left: 45%; animation-delay: 1.2s; }
+
+    @keyframes particleFloat {
+      0% { opacity: 0; transform: translateY(100vh) scale(0); }
+      20% { opacity: 0.8; }
+      80% { opacity: 0.8; }
+      100% { opacity: 0; transform: translateY(-10vh) scale(1); }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* header */
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 0 1.2rem;
+      border-bottom: 1px solid rgba(38, 46, 56, 0.5);
+      margin-bottom: 2rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 800;
+      font-size: 2rem;
+      letter-spacing: -0.03em;
+    }
+    .logo i { color: #6c8cff; font-size: 2.2rem; }
+    .logo span {
+      background: linear-gradient(145deg, #c4d4ff, #6c8cff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.2rem 2rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    .nav-links a {
+      color: #b0bccf;
+      text-decoration: none;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-links a i { color: #5a6b82; font-size: 0.85rem; }
+    .nav-links a:hover { color: #ffffff; }
+    .nav-links a:hover i { color: #8ca4ff; }
+    .nav-cta {
+      background: #6c8cff;
+      color: #0b0d10 !important;
+      padding: 0.4rem 1.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      gap: 6px;
+      transition: 0.15s;
+    }
+    .nav-cta i { color: #0b0d10 !important; }
+    .nav-cta:hover {
+      background: #7f9bff;
+      transform: scale(0.97);
+      color: #0b0d10 !important;
+    }
+
+    /* main content */
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem 0;
+      min-height: 60vh;
+    }
+
+    .coming-soon-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(26, 35, 46, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(45, 56, 70, 0.6);
+      border-radius: 60px;
+      padding: 0.4rem 1.2rem 0.4rem 0.8rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #b2c3db;
+      margin-bottom: 2rem;
+      animation: fadeInDown 0.8s ease-out;
+    }
+    .coming-soon-badge i {
+      color: #6c8cff;
+      font-size: 0.7rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .main-content h1 {
+      font-size: 4.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+    .main-content h1 .highlight {
+      background: linear-gradient(145deg, #b7ccff, #6c8cff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .main-content .subtitle {
+      font-size: 1.3rem;
+      color: #b2c2d9;
+      max-width: 600px;
+      margin-bottom: 0.5rem;
+      animation: fadeInUp 0.8s ease-out 0.4s both;
+    }
+    .main-content .description {
+      font-size: 1rem;
+      color: #8fa3be;
+      max-width: 500px;
+      margin-bottom: 2.5rem;
+      animation: fadeInUp 0.8s ease-out 0.5s both;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* countdown timer */
+    .countdown {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      animation: fadeInUp 0.8s ease-out 0.6s both;
+    }
+    .countdown-item {
+      background: rgba(18, 26, 34, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(38, 46, 56, 0.6);
+      border-radius: 20px;
+      padding: 1.2rem 1.8rem;
+      min-width: 80px;
+      text-align: center;
+      transition: 0.3s;
+    }
+    .countdown-item:hover {
+      border-color: #6c8cff;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(108, 140, 255, 0.15);
+    }
+    .countdown-item .number {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #eef2f6;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .countdown-item .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #8fa3be;
+      margin-top: 0.3rem;
+    }
+
+    /* action buttons */
+    .action-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      animation: fadeInUp 0.8s ease-out 0.8s both;
+    }
+    .btn-primary {
+      background: #6c8cff;
+      border: none;
+      padding: 0.8rem 2.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #0b0d10;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: 0.15s;
+      font-family: 'Inter', sans-serif;
+      text-decoration: none;
+    }
+    .btn-primary i { font-size: 0.9rem; }
+    .btn-primary:hover {
+      background: #7f9bff;
+      transform: scale(0.97);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #384353;
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 1rem;
+      color: #d0dcee;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: 0.15s;
+      font-family: 'Inter', sans-serif;
+      text-decoration: none;
+    }
+    .btn-outline i { color: #6f86b0; }
+    .btn-outline:hover {
+      background: #1f2938;
+      border-color: #5d72a0;
+      color: white;
+    }
+
+    /* newsletter */
+    .newsletter-section {
+      margin-top: 2.5rem;
+      animation: fadeInUp 0.8s ease-out 1s both;
+    }
+    .newsletter-section p {
+      color: #8fa3be;
+      font-size: 0.9rem;
+      margin-bottom: 0.8rem;
+    }
+    .newsletter-box {
+      display: flex;
+      background: rgba(20, 29, 40, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 60px;
+      border: 1px solid rgba(42, 54, 71, 0.6);
+      overflow: hidden;
+      max-width: 400px;
+      margin: 0 auto;
+      transition: 0.3s;
+    }
+    .newsletter-box:focus-within {
+      border-color: #6c8cff;
+      box-shadow: 0 0 30px rgba(108, 140, 255, 0.1);
+    }
+    .newsletter-box input {
+      background: transparent;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      font-size: 0.9rem;
+      color: #eef2f6;
+      outline: none;
+      flex: 1;
+      font-family: 'Inter', sans-serif;
+      min-width: 0;
+    }
+    .newsletter-box input::placeholder { color: #5b6f89; }
+    .newsletter-box button {
+      background: #6c8cff;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: #0b0d10;
+      cursor: pointer;
+      transition: 0.15s;
+      font-family: 'Inter', sans-serif;
+      white-space: nowrap;
+    }
+    .newsletter-box button:hover { background: #7f9bff; }
+
+    /* footer */
+    .footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(34, 44, 56, 0.5);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: #6a7d98;
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .footer-links a {
+      color: #7a8da8;
+      text-decoration: none;
+      transition: 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .footer-links a:hover { color: #b7cbff; }
+    .footer-links a i { font-size: 0.9rem; }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      .main-content h1 { font-size: 2.8rem; }
+      .countdown { gap: 0.8rem; }
+      .countdown-item { padding: 0.8rem 1.2rem; min-width: 60px; }
+      .countdown-item .number { font-size: 2rem; }
+      .top-bar { flex-direction: column; align-items: stretch; gap: 0.8rem; }
+      .nav-links { justify-content: center; }
+    }
+    @media (max-width: 480px) {
+      .main-content h1 { font-size: 2.2rem; }
+      .countdown { gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
+      .countdown-item { padding: 0.6rem 1rem; min-width: 50px; }
+      .countdown-item .number { font-size: 1.6rem; }
+      .newsletter-box { flex-direction: column; border-radius: 30px; max-width: 100%; }
+      .newsletter-box input { padding: 0.8rem 1.2rem; text-align: center; }
+      .newsletter-box button { padding: 0.7rem 1.5rem; border-radius: 0 0 30px 30px; }
+      .action-buttons { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-outline { width: 100%; justify-content: center; }
+      .footer { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- animated background -->
+  <div class="bg-animation">
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+  </div>
+
+  <!-- floating particles -->
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <div class="container">
+
+    <!-- header -->
+    <header class="top-bar">
+      <div class="logo">
+        <i class="fas fa-microchip"></i>
+        <span>spec.tech</span>
+      </div>
+      <div class="nav-links">
+        <a href="#"><i class="fas fa-laptop"></i> Laptops</a>
+        <a href="#"><i class="fas fa-tv"></i> TVs</a>
+        <a href="#"><i class="fas fa-tablet-alt"></i> Tablets</a>
+        <a href="#"><i class="fas fa-vr-cardboard"></i> VR</a>
+        <a href="#"><i class="fas fa-gamepad"></i> Consoles</a>
+        <a href="#"><i class="fas fa-desktop"></i> PCs</a>
+        <a href="#" class="nav-cta"><i class="fas fa-arrow-right"></i> Compare</a>
+      </div>
+    </header>
+
+    <!-- main content -->
+    <div class="main-content">
+
+      <div class="coming-soon-badge">
+        <i class="fas fa-circle"></i>
+        <span>Coming soon</span>
+      </div>
+
+      <h1>
+        <span class="highlight">Something</span> amazing<br>
+        is on its way
+      </h1>
+
+      <p class="subtitle">
+        We're working on something exciting for <strong>[Category Name]</strong>
+      </p>
+
+      <p class="description">
+        Our team is building the most comprehensive spec database for this category. 
+        Stay tuned for detailed comparisons, benchmarks, and expert insights.
+      </p>
+
+      <!-- countdown timer -->
+      <div class="countdown">
+        <div class="countdown-item">
+          <div class="number" id="days">00</div>
+          <div class="label">Days</div>
+        </div>
+        <div class="countdown-item">
+          <div class="number" id="hours">00</div>
+          <div class="label">Hours</div>
+        </div>
+        <div class="countdown-item">
+          <div class="number" id="minutes">00</div>
+          <div class="label">Minutes</div>
+        </div>
+        <div class="countdown-item">
+          <div class="number" id="seconds">00</div>
+          <div class="label">Seconds</div>
+        </div>
+      </div>
+
+      <!-- action buttons -->
+      <div class="action-buttons">
+        <a href="#" class="btn-primary"><i class="fas fa-bell"></i> Notify me</a>
+        <a href="#" class="btn-outline"><i class="fas fa-arrow-left"></i> Back to home</a>
+      </div>
+
+      <!-- newsletter -->
+      <div class="newsletter-section">
+        <p>Get notified when we launch · No spam, unsubscribe anytime</p>
+        <div class="newsletter-box">
+          <input type="email" placeholder="Enter your email">
+          <button><i class="fas fa-paper-plane"></i> Subscribe</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- footer -->
+    <div class="footer">
+      <span><i class="far fa-copyright"></i> 2026 spec.tech — coming soon</span>
+      <div class="footer-links">
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-discord"></i></a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // ----- countdown timer (set to 30 days from now) -----
+    (function() {
+      // Set target date: 30 days from now
+      const targetDate = new Date();
+      targetDate.setDate(targetDate.getDate() + 30);
+      targetDate.setHours(0, 0, 0, 0);
+
+      function updateCountdown() {
+        const now = new Date();
+        const diff = targetDate - now;
+
+        if (diff <= 0) {
+          document.getElementById('days').textContent = '00';
+          document.getElementById('hours').textContent = '00';
+          document.getElementById('minutes').textContent = '00';
+          document.getElementById('seconds').textContent = '00';
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('days').textContent = String(days).padStart(2, '0');
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    })();
+
+    // ----- Newsletter signup -----
+    document.querySelector('.newsletter-box button').addEventListener('click', function() {
+      const input = document.querySelector('.newsletter-box input');
+      const email = input.value.trim();
+      if (email) {
+        alert(`✅ Thanks for subscribing with ${email}! We'll notify you when we launch.`);
+        input.value = '';
+      } else {
+        alert('📧 Please enter a valid email address.');
+      }
+    });
+
+    // Enter key for newsletter
+    document.querySelector('.newsletter-box input').addEventListener('keyup', function(e) {
+      if (e.key === 'Enter') {
+        document.querySelector('.newsletter-box button').click();
+      }
+    });
+
+    // ----- Notify me button -----
+    document.querySelector('.btn-primary').addEventListener('click', function(e) {
+      e.preventDefault();
+      const input = document.querySelector('.newsletter-box input');
+      input.focus();
+      input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  </script>
+
+</body>
+</html>
