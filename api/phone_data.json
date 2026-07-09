@@ -1,0 +1,351 @@
+{
+  "phones": [
+    {
+      "id": 1,
+      "slug": "galaxy-s24-ultra",
+      "name": "Galaxy S24 Ultra",
+      "brand": "Samsung",
+      "category": "flagship",
+      "price": 1299,
+      "currency": "$",
+      "cpu": "Snapdragon 8 Gen 4",
+      "cpu_cores": 8,
+      "cpu_boost": "4.32 GHz",
+      "ram": "12GB LPDDR5X",
+      "storage": "256GB UFS 4.0",
+      "storage_expandable": "No",
+      "display": "6.8\" Dynamic AMOLED 2X, 120Hz, 2600 nits",
+      "display_resolution": "3120 x 1440 pixels",
+      "display_protection": "Gorilla Glass Armor",
+      "camera": "200MP + 50MP + 12MP + 10MP",
+      "camera_features": "100x Space Zoom, 8K video, Nightography",
+      "battery": "5000mAh",
+      "charging": "45W wired, 15W wireless, 4.5W reverse wireless",
+      "weight": "232g",
+      "dimensions": "162.3 x 79.0 x 8.6 mm",
+      "os": "Android 16, One UI 8.5",
+      "water_resistant": "IP68",
+      "5g": true,
+      "nfc": true,
+      "tags": ["flagship", "premium", "S Pen", "AI"],
+      "description": "The Galaxy S24 Ultra is Samsung's ultimate smartphone powerhouse. Featuring a stunning 6.8-inch Dynamic AMOLED 2X display with 2600 nits peak brightness, the Snapdragon 8 Gen 4 processor delivers unmatched performance. The quad-camera system with 200MP main sensor and 100x Space Zoom captures incredible photos and videos. With S Pen support, AI-powered features, and all-day battery life, it's the complete flagship experience.",
+      "sources": [
+        { "name": "Samsung official", "url": "https://www.samsung.com/galaxy-s24-ultra/" },
+        { "name": "GSMArena review", "url": "https://www.gsmarena.com/samsung_galaxy_s24_ultra-review/" },
+        { "name": "The Verge", "url": "https://www.theverge.com/samsung-galaxy-s24-ultra" }
+      ],
+      "where_to_buy": [
+        { "name": "Samsung Store", "url": "https://www.samsung.com/shop/galaxy-s24-ultra" },
+        { "name": "Amazon", "url": "https://www.amazon.com/samsung-galaxy-s24-ultra" },
+        { "name": "Best Buy", "url": "https://www.bestbuy.com/galaxy-s24-ultra" }
+      ],
+      "photos": [
+        "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=400&fit=crop"
+      ],
+      "personal_tests": {
+        "owned": true,
+        "purchase_date": "2026-02-10",
+        "benchmarks": {
+          "Geekbench 6 (multi)": 8200,
+          "Geekbench 6 (single)": 2850,
+          "3DMark Wild Life Extreme": 12400,
+          "PCMark Work 3.0": 16800
+        },
+        "camera_tests": {
+          "Daylight": "Excellent detail and dynamic range. 200MP mode captures incredible resolution.",
+          "Night mode": "Impressive low-light performance with minimal noise. Nightography is a game-changer.",
+          "Zoom": "10x optical zoom is sharp. 100x digital is usable for identification."
+        },
+        "notes": "The S Pen is incredibly useful for note-taking and photo editing. Battery life is all-day heavy use. The display is the best I've seen on any phone. Slightly heavy but well-balanced. AI features like Circle to Search are genuinely useful."
+      }
+    },
+    {
+      "id": 2,
+      "slug": "iphone-16-pro",
+      "name": "iPhone 16 Pro",
+      "brand": "Apple",
+      "category": "flagship",
+      "price": 1099,
+      "currency": "$",
+      "cpu": "A18 Pro",
+      "cpu_cores": 6,
+      "cpu_boost": "N/A",
+      "ram": "8GB Unified",
+      "storage": "256GB",
+      "storage_expandable": "No",
+      "display": "6.3\" Super Retina XDR OLED, 120Hz ProMotion, 2600 nits",
+      "display_resolution": "2556 x 1179 pixels",
+      "display_protection": "Ceramic Shield",
+      "camera": "48MP + 12MP + 12MP + LiDAR",
+      "camera_features": "5x optical zoom, 4K 120fps, Spatial video",
+      "battery": "3582mAh",
+      "charging": "30W wired, 25W MagSafe, 15W Qi2",
+      "weight": "199g",
+      "dimensions": "149.6 x 71.5 x 8.25 mm",
+      "os": "iOS 18",
+      "water_resistant": "IP68",
+      "5g": true,
+      "nfc": true,
+      "tags": ["flagship", "premium", "iOS", "pro"],
+      "description": "The iPhone 16 Pro represents the pinnacle of Apple's smartphone design. With the A18 Pro chip, it delivers desktop-class performance and incredible efficiency. The 48MP main camera with 5x optical zoom captures stunning photos and videos. The 120Hz ProMotion display is fluid and responsive, and iOS 18 brings powerful new features like AI enhancements and improved privacy controls.",
+      "sources": [
+        { "name": "Apple official", "url": "https://www.apple.com/iphone-16-pro/" },
+        { "name": "GSMArena review", "url": "https://www.gsmarena.com/apple_iphone_16_pro-review/" }
+      ],
+      "where_to_buy": [
+        { "name": "Apple Store", "url": "https://www.apple.com/shop/iphone-16-pro" },
+        { "name": "Amazon", "url": "https://www.amazon.com/iphone-16-pro" },
+        { "name": "Best Buy", "url": "https://www.bestbuy.com/iphone-16-pro" }
+      ],
+      "photos": [
+        "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=600&h=400&fit=crop"
+      ],
+      "personal_tests": {
+        "owned": false,
+        "benchmarks": {
+          "Geekbench 6 (multi)": 7800,
+          "Geekbench 6 (single)": 3800,
+          "3DMark Wild Life Extreme": 14500
+        },
+        "camera_tests": {
+          "Daylight": "Incredible color accuracy and dynamic range. Apple's image processing is top-tier.",
+          "Night mode": "Excellent low-light performance with natural-looking results.",
+          "Video": "Best video recording on any smartphone. 4K 120fps with Dolby Vision is stunning."
+        },
+        "notes": "Tested at Apple Store. The camera system is truly impressive. Battery life seems excellent based on reviews. The Action button is a great addition. iOS 18 feels polished and responsive."
+      }
+    },
+    {
+      "id": 3,
+      "slug": "pixel-9-pro",
+      "name": "Pixel 9 Pro",
+      "brand": "Google",
+      "category": "flagship",
+      "price": 999,
+      "currency": "$",
+      "cpu": "Google Tensor G4",
+      "cpu_cores": 8,
+      "cpu_boost": "3.1 GHz",
+      "ram": "16GB LPDDR5X",
+      "storage": "256GB UFS 3.1",
+      "storage_expandable": "No",
+      "display": "6.7\" Super Actua OLED, 120Hz, 3000 nits",
+      "display_resolution": "2992 x 1344 pixels",
+      "display_protection": "Gorilla Glass Victus 2",
+      "camera": "50MP + 48MP + 48MP",
+      "camera_features": "5x optical zoom, 8K video, Super Res Zoom",
+      "battery": "5050mAh",
+      "charging": "37W wired, 23W wireless, 12W reverse wireless",
+      "weight": "221g",
+      "dimensions": "162.8 x 76.6 x 8.5 mm",
+      "os": "Android 16",
+      "water_resistant": "IP68",
+      "5g": true,
+      "nfc": true,
+      "tags": ["flagship", "AI", "camera", "Google"],
+      "description": "The Pixel 9 Pro is Google's ultimate AI-powered smartphone. Powered by the Tensor G4 chip, it delivers incredible AI features like Magic Eraser, Photo Unblur, and real-time translation. The triple 50MP camera system captures stunning photos in all conditions, and the 6.7-inch Super Actua display is bright and vibrant. With 7 years of OS updates, it's built to last.",
+      "sources": [
+        { "name": "Google official", "url": "https://store.google.com/pixel-9-pro" },
+        { "name": "GSMArena review", "url": "https://www.gsmarena.com/google_pixel_9_pro-review/" }
+      ],
+      "where_to_buy": [
+        { "name": "Google Store", "url": "https://store.google.com/pixel-9-pro" },
+        { "name": "Amazon", "url": "https://www.amazon.com/google-pixel-9-pro" },
+        { "name": "Best Buy", "url": "https://www.bestbuy.com/pixel-9-pro" }
+      ],
+      "photos": [
+        "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=400&fit=crop"
+      ],
+      "personal_tests": {
+        "owned": false,
+        "benchmarks": {
+          "Geekbench 6 (multi)": 6500,
+          "Geekbench 6 (single)": 2150,
+          "3DMark Wild Life Extreme": 8500
+        },
+        "camera_tests": {
+          "Daylight": "Incredible dynamic range and color science. Pixel cameras are legendary.",
+          "Night mode": "Best night mode on any Android phone. Astro-photography is stunning.",
+          "Video": "4K 60fps is smooth with great stabilization. AI features enhance footage."
+        },
+        "notes": "Tested at a Google event. The AI features are genuinely useful. Battery life is solid. The camera is the main selling point. Software experience is clean and smooth."
+      }
+    },
+    {
+      "id": 4,
+      "slug": "galaxy-a56",
+      "name": "Galaxy A56 5G",
+      "brand": "Samsung",
+      "category": "midrange",
+      "price": 399,
+      "currency": "$",
+      "cpu": "Exynos 1480",
+      "cpu_cores": 8,
+      "cpu_boost": "2.75 GHz",
+      "ram": "8GB LPDDR4X",
+      "storage": "128GB UFS 3.1",
+      "storage_expandable": "Yes, microSDXC",
+      "display": "6.6\" Super AMOLED, 120Hz, 1000 nits",
+      "display_resolution": "2340 x 1080 pixels",
+      "display_protection": "Gorilla Glass Victus+",
+      "camera": "50MP + 12MP + 5MP",
+      "camera_features": "Ultrawide, macro, 4K video",
+      "battery": "5000mAh",
+      "charging": "25W wired",
+      "weight": "200g",
+      "dimensions": "163.2 x 77.9 x 8.1 mm",
+      "os": "Android 16, One UI 8.5",
+      "water_resistant": "IP67",
+      "5g": true,
+      "nfc": true,
+      "tags": ["midrange", "value", "5G"],
+      "description": "The Galaxy A56 5G delivers flagship-like features at a mid-range price. With a 6.6-inch Super AMOLED 120Hz display, Exynos 1480 processor, and 50MP triple camera, it offers excellent value. The 5000mAh battery provides all-day endurance, and IP67 water resistance adds durability. It's the perfect phone for those who want premium features without the premium price.",
+      "sources": [
+        { "name": "Samsung official", "url": "https://www.samsung.com/galaxy-a56/" },
+        { "name": "GSMArena review", "url": "https://www.gsmarena.com/samsung_galaxy_a56-review/" }
+      ],
+      "where_to_buy": [
+        { "name": "Amazon", "url": "https://www.amazon.com/samsung-galaxy-a56" },
+        { "name": "Best Buy", "url": "https://www.bestbuy.com/galaxy-a56" },
+        { "name": "Samsung Store", "url": "https://www.samsung.com/shop/galaxy-a56" }
+      ],
+      "photos": [
+        "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=400&fit=crop"
+      ],
+      "personal_tests": {
+        "owned": true,
+        "purchase_date": "2026-03-01",
+        "benchmarks": {
+          "Geekbench 6 (multi)": 3800,
+          "Geekbench 6 (single)": 1450,
+          "3DMark Wild Life Extreme": 3200
+        },
+        "camera_tests": {
+          "Daylight": "Good detail and color. 50MP mode captures plenty of resolution.",
+          "Night mode": "Decent low-light performance. Noise reduction is effective.",
+          "Ultrawide": "Fun perspective but quality drops off compared to main camera."
+        },
+        "notes": "Great value for money. The 120Hz display is smooth. Battery easily lasts a full day. Camera is good for the price. Plastic build but feels solid. Perfect for everyday use."
+      }
+    },
+    {
+      "id": 5,
+      "slug": "redmi-note-14-pro",
+      "name": "Redmi Note 14 Pro",
+      "brand": "Xiaomi",
+      "category": "midrange",
+      "price": 349,
+      "currency": "$",
+      "cpu": "MediaTek Dimensity 7300",
+      "cpu_cores": 8,
+      "cpu_boost": "2.5 GHz",
+      "ram": "8GB LPDDR4X",
+      "storage": "256GB UFS 3.1",
+      "storage_expandable": "Yes, microSDXC",
+      "display": "6.67\" AMOLED, 120Hz, 1800 nits",
+      "display_resolution": "2712 x 1220 pixels",
+      "display_protection": "Gorilla Glass Victus",
+      "camera": "200MP + 8MP + 2MP",
+      "camera_features": "OIS, 4K video, ultrawide, macro",
+      "battery": "5100mAh",
+      "charging": "67W wired",
+      "weight": "189g",
+      "dimensions": "162.2 x 75.2 x 8.2 mm",
+      "os": "Android 16, HyperOS",
+      "water_resistant": "IP68",
+      "5g": true,
+      "nfc": true,
+      "tags": ["midrange", "value", "camera"],
+      "description": "The Redmi Note 14 Pro is a mid-range champion with a flagship-grade 200MP camera. Featuring a 6.67-inch AMOLED 120Hz display, MediaTek Dimensity 7300 processor, and 5100mAh battery with 67W fast charging, it offers incredible value. The IP68 water resistance and premium design make it feel much more expensive than its price tag suggests.",
+      "sources": [
+        { "name": "Xiaomi official", "url": "https://www.mi.com/redmi-note-14-pro" },
+        { "name": "GSMArena review", "url": "https://www.gsmarena.com/xiaomi_redmi_note_14_pro-review/" }
+      ],
+      "where_to_buy": [
+        { "name": "Amazon", "url": "https://www.amazon.com/redmi-note-14-pro" },
+        { "name": "AliExpress", "url": "https://www.aliexpress.com/redmi-note-14-pro" }
+      ],
+      "photos": [
+        "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=400&fit=crop"
+      ],
+      "personal_tests": {
+        "owned": false,
+        "benchmarks": {
+          "Geekbench 6 (multi)": 4200,
+          "Geekbench 6 (single)": 1550,
+          "3DMark Wild Life Extreme": 3500
+        },
+        "camera_tests": {
+          "Daylight": "200MP mode captures incredible detail. Pixel-binning produces great 12MP shots.",
+          "Night mode": "Good low-light performance with OIS. Not as good as flagship phones.",
+          "Video": "4K video is smooth with effective stabilization."
+        },
+        "notes": "Tested briefly at a Xiaomi store. The 200MP camera is the standout feature. Display is bright and smooth. Battery charging is very fast. Great value proposition."
+      }
+    },
+    {
+      "id": 6,
+      "slug": "nokia-g22",
+      "name": "Nokia G22",
+      "brand": "Nokia",
+      "category": "budget",
+      "price": 199,
+      "currency": "$",
+      "cpu": "Unisoc Tiger T606",
+      "cpu_cores": 8,
+      "cpu_boost": "1.8 GHz",
+      "ram": "4GB LPDDR4X",
+      "storage": "64GB eMMC 5.1",
+      "storage_expandable": "Yes, microSDXC",
+      "display": "6.5\" LCD, 90Hz, 500 nits",
+      "display_resolution": "1600 x 720 pixels",
+      "display_protection": "Gorilla Glass 3",
+      "camera": "50MP + 2MP + 2MP",
+      "camera_features": "Ultrawide, macro, 1080p video",
+      "battery": "5050mAh",
+      "charging": "20W wired",
+      "weight": "206g",
+      "dimensions": "165.0 x 76.2 x 8.5 mm",
+      "os": "Android 16 (Android One)",
+      "water_resistant": "IP52",
+      "5g": false,
+      "nfc": false,
+      "tags": ["budget", "value", "long battery"],
+      "description": "The Nokia G22 is a budget-friendly smartphone that doesn't compromise on essentials. With a 6.5-inch 90Hz display, 50MP camera, and massive 5050mAh battery, it delivers solid performance for everyday tasks. The repairable design allows users to replace the battery easily, extending the phone's lifespan. Running pure Android 16 with Android One, it offers a clean and bloatware-free experience.",
+      "sources": [
+        { "name": "Nokia official", "url": "https://www.nokia.com/phones/nokia-g22" },
+        { "name": "GSMArena review", "url": "https://www.gsmarena.com/nokia_g22-review/" }
+      ],
+      "where_to_buy": [
+        { "name": "Amazon", "url": "https://www.amazon.com/nokia-g22" },
+        { "name": "Best Buy", "url": "https://www.bestbuy.com/nokia-g22" }
+      ],
+      "photos": [
+        "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=400&fit=crop"
+      ],
+      "personal_tests": {
+        "owned": true,
+        "purchase_date": "2026-04-15",
+        "benchmarks": {
+          "Geekbench 6 (multi)": 2200,
+          "Geekbench 6 (single)": 850,
+          "PCMark Work 3.0": 4200
+        },
+        "camera_tests": {
+          "Daylight": "Good for social media photos. 50MP mode captures decent detail.",
+          "Night mode": "Average low-light performance. Flash is necessary in dark conditions.",
+          "Video": "1080p 30fps is smooth and acceptable for basic recording."
+        },
+        "notes": "Great value for the price. Battery lasts 2 days on light use. Clean Android experience with no bloatware. The repairable design is a nice feature. Performance is adequate for daily tasks, social media, and light gaming. Perfect as a backup phone or for budget-conscious users."
+      }
+    }
+  ]
+}
