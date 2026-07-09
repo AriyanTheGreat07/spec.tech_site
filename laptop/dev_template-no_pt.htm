@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>spec.tech — laptop detail</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #080b10;
+      color: #eef2f6;
+      line-height: 1.6;
+      padding: 1.8rem 1.5rem 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* header */
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 0 1.2rem;
+      border-bottom: 1px solid #262e38;
+      margin-bottom: 2rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 800;
+      font-size: 2rem;
+      letter-spacing: -0.03em;
+    }
+    .logo i { color: #6c8cff; font-size: 2.2rem; }
+    .logo span {
+      background: linear-gradient(145deg, #c4d4ff, #6c8cff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.2rem 2rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    .nav-links a {
+      color: #b0bccf;
+      text-decoration: none;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-links a i { color: #5a6b82; font-size: 0.85rem; }
+    .nav-links a:hover { color: #ffffff; }
+    .nav-links a:hover i { color: #8ca4ff; }
+    .nav-cta {
+      background: #6c8cff;
+      color: #0b0d10 !important;
+      padding: 0.4rem 1.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      gap: 6px;
+      transition: 0.15s;
+    }
+    .nav-cta i { color: #0b0d10 !important; }
+    .nav-cta:hover {
+      background: #7f9bff;
+      transform: scale(0.97);
+      color: #0b0d10 !important;
+    }
+
+    /* breadcrumb */
+    .breadcrumb {
+      color: #6f83a0;
+      font-size: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+    .breadcrumb a {
+      color: #8ba0c0;
+      text-decoration: none;
+    }
+    .breadcrumb a:hover { color: #b7cbff; }
+    .breadcrumb i { font-size: 0.5rem; margin: 0 0.6rem; color: #475769; }
+
+    /* device header */
+    .device-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+      gap: 1rem;
+    }
+    .device-title h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .device-title .subtitle {
+      color: #99adc9;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+    .device-title .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.6rem;
+    }
+    .device-title .tags span {
+      background: #1a2532;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      border: 1px solid #2f3a48;
+      color: #b0c4de;
+    }
+    .device-meta {
+      text-align: right;
+      color: #8fa3be;
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+    .device-meta .price {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #c6d2e8;
+    }
+    .device-meta .price i { color: #7f97e0; margin-right: 4px; }
+
+    /* detail layout */
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* left column - photos */
+    .photo-gallery {
+      background: #11181f;
+      border-radius: 28px;
+      padding: 1.2rem;
+      border: 1px solid #262f3b;
+    }
+    .main-photo {
+      width: 100%;
+      aspect-ratio: 16/10;
+      background: #1a232e;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .main-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .thumbnails {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .thumbnails img {
+      width: 80px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid #262f3b;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+    .thumbnails img:hover {
+      border-color: #6c8cff;
+      transform: scale(1.02);
+    }
+    .owned-badge {
+      display: inline-block;
+      background: #1f3a2a;
+      color: #7bc9a0;
+      padding: 0.2rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      border: 1px solid #2d5a3d;
+      margin-top: 0.6rem;
+    }
+
+    /* right column - specs */
+    .specs-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .specs-table {
+      background: #11181f;
+      border-radius: 20px;
+      border: 1px solid #262f3b;
+      overflow: hidden;
+    }
+    .specs-table .spec-row {
+      display: flex;
+      border-bottom: 1px solid #1f2936;
+    }
+    .specs-table .spec-row:last-child { border-bottom: none; }
+    .specs-table .spec-label {
+      width: 140px;
+      min-width: 140px;
+      padding: 0.7rem 1rem;
+      color: #9aabbf;
+      font-size: 0.8rem;
+      font-weight: 500;
+      background: #0e151d;
+      border-right: 1px solid #1f2936;
+    }
+    .specs-table .spec-value {
+      padding: 0.7rem 1rem;
+      color: #e0e8f2;
+      font-size: 0.85rem;
+      flex: 1;
+    }
+    .specs-table .spec-value i { color: #6f8aff; margin-right: 4px; }
+    .specs-table .spec-value .sub-spec {
+      display: block;
+      color: #8fa3be;
+      font-size: 0.75rem;
+      margin-top: 0.1rem;
+    }
+
+    /* description */
+    .description-box {
+      background: #0e151d;
+      padding: 1.2rem 1.5rem;
+      border-radius: 16px;
+      border-left: 3px solid #6c8cff;
+      color: #b0c2da;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* action buttons */
+    .action-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+    .btn-primary {
+      background: #6c8cff;
+      border: none;
+      padding: 0.6rem 1.8rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #0b0d10;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: 0.15s;
+      font-family: 'Inter', sans-serif;
+      text-decoration: none;
+    }
+    .btn-primary:hover { background: #7f9bff; transform: scale(0.97); }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #384353;
+      padding: 0.6rem 1.8rem;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #d0dcee;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: 0.15s;
+      font-family: 'Inter', sans-serif;
+      text-decoration: none;
+    }
+    .btn-outline:hover { background: #1f2938; border-color: #5d72a0; color: white; }
+
+    /* where to buy & sources */
+    .buy-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      background: #11181f;
+      border-radius: 20px;
+      padding: 1.2rem 1.5rem;
+      border: 1px solid #262f3b;
+    }
+    .buy-section h3 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #8fa3be;
+      margin-bottom: 0.6rem;
+    }
+    .buy-section ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .buy-section ul li a {
+      color: #b0c4de;
+      text-decoration: none;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.15s;
+    }
+    .buy-section ul li a i { color: #5d7392; font-size: 0.6rem; }
+    .buy-section ul li a:hover { color: #ffffff; }
+    .buy-section ul li a:hover i { color: #8aa3e6; transform: translateX(3px); }
+
+    /* personal tests */
+    .personal-tests {
+      background: #11181f;
+      border-radius: 20px;
+      padding: 1.5rem;
+      border: 1px solid #262f3b;
+    }
+    .personal-tests h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 1rem;
+    }
+    .personal-tests h3 i { color: #6c8cff; }
+    .test-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .test-item {
+      background: #0e151d;
+      padding: 0.6rem 1rem;
+      border-radius: 12px;
+      border: 1px solid #1f2936;
+      display: flex;
+      justify-content: space-between;
+    }
+    .test-item .label { color: #9aabbf; font-size: 0.8rem; }
+    .test-item .value {
+      color: #e0e8f2;
+      font-weight: 500;
+      font-size: 0.8rem;
+    }
+    .test-notes {
+      margin-top: 1rem;
+      background: #0e151d;
+      padding: 0.8rem 1.2rem;
+      border-radius: 12px;
+      border-left: 3px solid #6c8cff;
+      color: #b0c2da;
+      font-size: 0.85rem;
+    }
+    .test-notes i { color: #6c8cff; margin-right: 6px; }
+
+    /* camera test gallery */
+    .camera-gallery {
+      margin-top: 1rem;
+      background: #0e151d;
+      border-radius: 12px;
+      padding: 1rem;
+      border: 1px solid #1f2936;
+    }
+    .camera-gallery h4 {
+      font-size: 0.85rem;
+      color: #b0c4de;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .camera-gallery h4 i { color: #6c8cff; }
+    .camera-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 0.6rem;
+    }
+    .camera-grid .cam-thumb {
+      aspect-ratio: 4/3;
+      background: #1a232e;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 2px solid #262f3b;
+      cursor: pointer;
+      transition: 0.15s;
+      position: relative;
+    }
+    .camera-grid .cam-thumb:hover {
+      border-color: #6c8cff;
+      transform: scale(1.03);
+    }
+    .camera-grid .cam-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .camera-grid .cam-thumb .cam-label {
+      position: absolute;
+      bottom: 4px;
+      left: 4px;
+      background: rgba(0,0,0,0.7);
+      padding: 0.1rem 0.5rem;
+      border-radius: 10px;
+      font-size: 0.55rem;
+      color: #b0c4de;
+      backdrop-filter: blur(4px);
+    }
+    .camera-lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .camera-lightbox.active {
+      display: flex;
+    }
+    .camera-lightbox img {
+      max-width: 90%;
+      max-height: 85vh;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+      object-fit: contain;
+    }
+    .camera-lightbox .close-lightbox {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: 0.2s;
+      background: none;
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .camera-lightbox .close-lightbox:hover {
+      color: #6c8cff;
+      transform: scale(1.1);
+    }
+    .camera-lightbox .lightbox-label {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.7);
+      padding: 0.4rem 1.2rem;
+      border-radius: 30px;
+      color: #b0c4de;
+      font-size: 0.8rem;
+      backdrop-filter: blur(4px);
+      border: 1px solid #2f3a48;
+    }
+
+    /* footer */
+    .footer-detailed {
+      margin-top: 3.5rem;
+      border-top: 1px solid #222c38;
+      padding: 2.8rem 0 1.8rem;
+      background: #0b1017;
+      border-radius: 32px 32px 0 0;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 2.5rem 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-brand h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.6rem;
+    }
+    .footer-brand h3 i { color: #6c8cff; }
+    .footer-brand h3 span {
+      background: linear-gradient(145deg, #c4d4ff, #6c8cff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .footer-brand p { color: #9aadc7; font-size: 0.9rem; max-width: 280px; line-height: 1.6; margin-bottom: 1.2rem; }
+    .social-icons { display: flex; gap: 0.8rem; }
+    .social-icons a {
+      background: #1b2532;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #b6c7e0;
+      font-size: 0.9rem;
+      transition: 0.15s;
+      text-decoration: none;
+      border: 1px solid #2d3a4b;
+    }
+    .social-icons a:hover { background: #2d3d54; color: white; border-color: #6c8cff; }
+    .footer-col h4 {
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #a0b3cd;
+      margin-bottom: 1.2rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .footer-col ul li a {
+      color: #8fa3be;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .footer-col ul li a i { font-size: 0.6rem; color: #5d7392; transition: 0.15s; }
+    .footer-col ul li a:hover { color: #e0eaf9; }
+    .footer-col ul li a:hover i { color: #8aa3e6; transform: translateX(3px); }
+    .footer-newsletter p { color: #9aadc7; font-size: 0.9rem; margin-bottom: 0.8rem; }
+    .newsletter-box {
+      display: flex;
+      background: #141d28;
+      border-radius: 60px;
+      border: 1px solid #2a3647;
+      overflow: hidden;
+      max-width: 300px;
+    }
+    .newsletter-box input {
+      background: transparent;
+      border: none;
+      padding: 0.6rem 1rem;
+      font-size: 0.8rem;
+      color: #eef2f6;
+      outline: none;
+      flex: 1;
+      font-family: 'Inter', sans-serif;
+      min-width: 0;
+    }
+    .newsletter-box input::placeholder { color: #5b6f89; }
+    .newsletter-box button {
+      background: #6c8cff;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      font-weight: 600;
+      font-size: 0.7rem;
+      color: #0b0d10;
+      cursor: pointer;
+      transition: 0.15s;
+      font-family: 'Inter', sans-serif;
+      white-space: nowrap;
+    }
+    .newsletter-box button:hover { background: #7f9bff; }
+    .footer-bottom {
+      border-top: 1px solid #1f2a37;
+      padding-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.8rem;
+      color: #6a7d98;
+    }
+    .footer-bottom-links a {
+      color: #7a8da8;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      transition: 0.15s;
+    }
+    .footer-bottom-links a:hover { color: #b7cbff; }
+
+    @media (max-width: 900px) {
+      .detail-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .specs-table .spec-label { width: 100px; min-width: 100px; }
+    }
+    @media (max-width: 850px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .footer-brand { grid-column: 1 / -1; }
+      .device-header { flex-direction: column; }
+      .device-meta { text-align: left; width: 100%; }
+    }
+    @media (max-width: 550px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 1.8rem; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .footer-bottom-links a { margin-left: 0; margin-right: 1.2rem; }
+      .top-bar { flex-direction: column; align-items: stretch; gap: 0.8rem; }
+      .device-title h1 { font-size: 1.8rem; }
+      .specs-table .spec-label { width: 80px; min-width: 80px; font-size: 0.7rem; padding: 0.5rem 0.6rem; }
+      .specs-table .spec-value { font-size: 0.75rem; padding: 0.5rem 0.6rem; }
+      .buy-section { grid-template-columns: 1fr; }
+      .test-grid { grid-template-columns: 1fr; }
+      .action-buttons { flex-direction: column; }
+      .btn-primary, .btn-outline { justify-content: center; }
+      .camera-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- header -->
+  <header class="top-bar">
+    <div class="logo">
+      <i class="fas fa-microchip"></i>
+      <span>spec.tech</span>
+    </div>
+    <div class="nav-links">
+      <a href="#"><i class="fas fa-laptop"></i> Laptops</a>
+      <a href="#"><i class="fas fa-tv"></i> TVs</a>
+      <a href="#"><i class="fas fa-tablet-alt"></i> Tablets</a>
+      <a href="#"><i class="fas fa-vr-cardboard"></i> VR</a>
+      <a href="#"><i class="fas fa-gamepad"></i> Consoles</a>
+      <a href="#"><i class="fas fa-desktop"></i> PCs</a>
+      <a href="#" class="nav-cta"><i class="fas fa-arrow-right"></i> Compare</a>
+    </div>
+  </header>
+
+  <!-- breadcrumb -->
+  <div class="breadcrumb">
+    <a href="#">Home</a> <i class="fas fa-chevron-right"></i>
+    <a href="#">Laptops</a> <i class="fas fa-chevron-right"></i>
+    <span style="color:#b0c4de;">[Device Name]</span>
+  </div>
+
+  <!-- device header -->
+  <div class="device-header">
+    <div class="device-title">
+      <h1>[Device Name] <span style="font-size:1.2rem; font-weight:400; color:#8fa3be;">[Brand]</span></h1>
+      <div class="subtitle">Released [Date] · [Weight] · [Thickness]</div>
+      <div class="tags">
+        <span>#[Tag1]</span>
+        <span>#[Tag2]</span>
+        <span>#[Tag3]</span>
+        <span class="owned-badge" style="margin-top:0;"><i class="fas fa-check-circle"></i> Personally owned</span>
+      </div>
+    </div>
+    <div class="device-meta">
+      <div class="price"><i class="fas fa-tag"></i> $[Price]</div>
+      <div>Also known as [Alternative Name]</div>
+    </div>
+  </div>
+
+  <!-- detail content -->
+  <div class="detail-grid">
+
+    <!-- left: photos -->
+    <div class="photo-gallery">
+      <div class="main-photo">
+        <img src="https://images.unsplash.com/photo-1593642702909-dec73df255d7?w=600&h=400&fit=crop" alt="main photo" id="mainPhotoImg">
+      </div>
+      <div class="thumbnails">
+        <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=80&h=60&fit=crop" alt="thumbnail 1" onclick="document.getElementById('mainPhotoImg').src='https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=600&h=400&fit=crop'">
+        <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=80&h=60&fit=crop" alt="thumbnail 2" onclick="document.getElementById('mainPhotoImg').src='https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=600&h=400&fit=crop'">
+        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=80&h=60&fit=crop" alt="thumbnail 3" onclick="document.getElementById('mainPhotoImg').src='https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&h=400&fit=crop'">
+      </div>
+    </div>
+
+    <!-- right: specs -->
+    <div class="specs-section">
+
+      <!-- description -->
+      <div class="description-box">
+        <strong>📝 Description</strong><br>
+        [Write a detailed description of the laptop here. Include key features, target audience, and what makes it special.]
+      </div>
+
+      <!-- specs table -->
+      <div class="specs-table">
+        <div class="spec-row">
+          <div class="spec-label">Network</div>
+          <div class="spec-value">GSM / HSPA / LTE / 5G</div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-label">Launch</div>
+          <div class="spec-value">
+            <strong>Announced</strong> [Date]<br>
+            <strong>Status</strong> Available. Released [Date]
+          </div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-label">Body</div>
+          <div class="spec-value">
+            <strong>Dimensions</strong> [W x H x D] mm<br>
+            <strong>Weight</strong> [Weight] g<br>
+            <strong>Build</strong> Glass front (Gorilla Glass Victus+), plastic frame, glass back<br>
+            <strong>SIM</strong> Nano-SIM + Nano-SIM<br>
+            <span class="sub-spec">IP64 dust tight and water resistant</span>
+          </div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-label">Display</div>
+          <div class="spec-value">
+            <strong>Type</strong> [Display Type], 120Hz, [Brightness] nits<br>
+            <strong>Size</strong> [Size] inches, [Area] cm²<br>
+            <strong>Resolution</strong> [Resolution] pixels (~[PPI] ppi density)<br>
+            <strong>Protection</strong> Corning Gorilla Glass Victus+
+          </div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-label">Platform</div>
+          <div class="spec-value">
+            <strong>OS</strong> [OS Version], up to [X] major upgrades<br>
+            <strong>Chipset</strong> [Chipset Name] ([Process] nm)<br>
+            <strong>CPU</strong> Octa-core ([Core Config])<br>
+            <strong>GPU</strong> [GPU Name]
+          </div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-label">Memory</div>
+          <div class="spec-value">
+            <strong>Card slot</strong> [microSDXC support]<br>
+            <strong>Internal</strong> [Storage] [RAM] GB<br>
+            <span class="sub-spec">UFS 3.1</span>
+          </div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-label">Main Camera</div>
+          <div class="spec-value">
+            <strong>Triple</strong> [Main Camera Specs]<br>
+            <strong>Features</strong> LED flash, panorama, HDR<br>
+            <strong>Video</strong> 4K@30fps, 1080p@30fps, gyro-EIS
+          </div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-label">Selfie Camera</div>
+          <div class="spec-value">
+            <strong>Single</strong> [Selfie Camera Specs]<br>
+            <strong>Video</strong> 1080p@30fps, HDR
+          </div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-label">Sound</div>
+          <div class="spec-value">
+            <strong>Loudspeaker</strong> Yes<br>
+            <strong>3.5mm jack</strong> No
+          </div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-label">Comms</div>
+          <div class="spec-value">
+            <strong>WLAN</strong> Wi-Fi 802.11 a/b/g/n/ac, dual-band, Wi-Fi Direct<br>
+            <strong>Bluetooth</strong> 5.3, A2DP, LE, ASHA<br>
+            <strong>Positioning</strong> GPS, GALILEO, GLONASS, BDS, QZSS<br>
+            <strong>NFC</strong> Yes<br>
+            <strong>USB</strong> USB Type-C 2.0, OTG
+          </div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-label">Features</div>
+          <div class="spec-value">
+            <strong>Sensors</strong> Fingerprint (side-mounted), accelerometer, gyro, compass<br>
+            <span class="sub-spec">Virtual proximity sensing</span>
+          </div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-label">Battery</div>
+          <div class="spec-value">
+            <strong>Type</strong> [Battery Capacity] mAh<br>
+            <strong>Charging</strong> [Charging Speed] wired<br>
+            <span class="sub-spec">Bypass charging</span>
+          </div>
+        </div>
+        <div class="spec-row">
+          <div class="spec-label">Misc</div>
+          <div class="spec-value">
+            <strong>Colors</strong> [Colors]<br>
+            <strong>Models</strong> [Model Numbers]<br>
+            <strong>SAR</strong> [SAR Values]<br>
+            <strong>Price</strong> About [Price] EUR
+          </div>
+        </div>
+      </div>
+
+      <!-- action buttons -->
+      <div class="action-buttons">
+        <a href="#" class="btn-primary"><i class="fas fa-arrows-left-right"></i> Compare</a>
+        <a href="#" class="btn-outline"><i class="fas fa-share-alt"></i> Share</a>
+        <a href="#" class="btn-outline"><i class="fas fa-flag"></i> Report</a>
+      </div>
+
+      <!-- where to buy & sources -->
+      <div class="buy-section">
+        <div>
+          <h3><i class="fas fa-shopping-cart"></i> Where to buy</h3>
+          <ul>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Amazon</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Best Buy</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Manufacturer Store</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3><i class="fas fa-link"></i> Sources</h3>
+          <ul>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Official website</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> TechRadar review</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Notebookcheck</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- personal tests -->
+      <div class="personal-tests">
+        <h3><i class="fas fa-flask"></i> Personal tests</h3>
+        <div class="test-grid">
+          <div class="test-item"><span class="label">Cinebench R24 (multi)</span><span class="value">[Score]</span></div>
+          <div class="test-item"><span class="label">Cinebench R24 (single)</span><span class="value">[Score]</span></div>
+          <div class="test-item"><span class="label">Geekbench 6 (multi)</span><span class="value">[Score]</span></div>
+          <div class="test-item"><span class="label">Geekbench 6 (single)</span><span class="value">[Score]</span></div>
+          <div class="test-item"><span class="label">3DMark Time Spy</span><span class="value">[Score]</span></div>
+          <div class="test-item"><span class="label">SSD read (MB/s)</span><span class="value">[Speed]</span></div>
+        </div>
+
+        <!-- Camera test gallery -->
+        <div class="camera-gallery">
+          <h4><i class="fas fa-camera"></i> Camera test samples</h4>
+          <div class="camera-grid">
+            <div class="cam-thumb" onclick="openLightbox('https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?w=400&h=300&fit=crop', 'Daylight shot')">
+              <img src="https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?w=200&h=150&fit=crop" alt="camera test 1">
+              <span class="cam-label">Daylight</span>
+            </div>
+            <div class="cam-thumb" onclick="openLightbox('https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=300&fit=crop', 'Night mode test')">
+              <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=200&h=150&fit=crop" alt="camera test 2">
+              <span class="cam-label">Night mode</span>
+            </div>
+            <div class="cam-thumb" onclick="openLightbox('https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=400&h=300&fit=crop', 'Portrait mode')">
+              <img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?w=200&h=150&fit=crop" alt="camera test 3">
+              <span class="cam-label">Portrait</span>
+            </div>
+            <div class="cam-thumb" onclick="openLightbox('https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=400&h=300&fit=crop', 'Wide angle test')">
+              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=200&h=150&fit=crop" alt="camera test 4">
+              <span class="cam-label">Wide angle</span>
+            </div>
+            <div class="cam-thumb" onclick="openLightbox('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=300&fit=crop', 'Macro shot')">
+              <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=200&h=150&fit=crop" alt="camera test 5">
+              <span class="cam-label">Macro</span>
+            </div>
+            <div class="cam-thumb" onclick="openLightbox('https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&h=300&fit=crop', 'Low light test')">
+              <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=200&h=150&fit=crop" alt="camera test 6">
+              <span class="cam-label">Low light</span>
+            </div>
+          </div>
+          <div style="margin-top:0.5rem; font-size:0.75rem; color:#6f83a0;">
+            <i class="fas fa-info-circle"></i> Click any photo to enlarge
+          </div>
+        </div>
+
+        <div class="test-notes">
+          <i class="fas fa-sticky-note"></i> [Add your personal notes about the device here. Include things like battery life, fan noise, keyboard feel, display quality, and any other observations.]
+        </div>
+        <div style="margin-top:0.6rem; font-size:0.8rem; color:#6f83a0;">
+          <i class="far fa-calendar-alt"></i> Purchased: [Purchase Date]
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="camera-lightbox" id="cameraLightbox" onclick="closeLightbox()">
+    <button class="close-lightbox" onclick="closeLightbox()">&times;</button>
+    <img id="lightboxImg" src="" alt="camera test">
+    <div class="lightbox-label" id="lightboxLabel">Photo</div>
+  </div>
+
+  <!-- footer -->
+  <footer class="footer-detailed">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3><i class="fas fa-microchip"></i><span>spec.tech</span></h3>
+        <p>Modern device specs for laptops, TVs, VR, consoles, and more. Built for enthusiasts.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-discord"></i></a>
+          <a href="#"><i class="fab fa-reddit-alien"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Laptops</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> TVs</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Tablets</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> VR headsets</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Consoles</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Desktops</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Help center</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> API docs</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Report issue</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Suggest a device</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-newsletter">
+        <h4>Stay updated</h4>
+        <p>Get the latest specs and reviews in your inbox.</p>
+        <div class="newsletter-box">
+          <input type="email" placeholder="Email address">
+          <button><i class="fas fa-paper-plane"></i></button>
+        </div>
+        <p style="font-size: 0.7rem; color: #5f748f; margin-top: 0.8rem;">
+          <i class="fas fa-lock" style="font-size: 0.6rem;"></i> No spam, unsubscribe anytime.
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span><i class="far fa-copyright"></i> 2026 spec.tech — all specs, one place.</span>
+      <div class="footer-bottom-links">
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Careers</a>
+        <a href="#">Contact</a>
+        <a href="#"><i class="fas fa-arrow-up" style="margin-left: 0.5rem;"></i></a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // Lightbox functionality
+  function openLightbox(imgSrc, label) {
+    const lightbox = document.getElementById('cameraLightbox');
+    const img = document.getElementById('lightboxImg');
+    const labelEl = document.getElementById('lightboxLabel');
+    img.src = imgSrc;
+    labelEl.textContent = label || 'Camera test';
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    const lightbox = document.getElementById('cameraLightbox');
+    lightbox.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+
+  // Close lightbox with Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeLightbox();
+    }
+  });
+</script>
+</body>
+</html>
