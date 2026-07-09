@@ -655,12 +655,12 @@
 
     // ----- fetch data from /api/laptop_data.json -----
     function fetchDevices() {
-      // In production, use this:
-      // return fetch('/api/laptop_data.json')
-      //   .then(res => {
-      //     if (!res.ok) throw new Error('Failed to fetch laptop data');
-      //     return res.json();
-      //   });
+      In production, use this:
+      return fetch('/api/laptop_data.json')
+        .then(res => {
+          if (!res.ok) throw new Error('Failed to fetch laptop data');
+          return res.json();
+        });
 
     // ----- render cards -----
     function renderDevices(devices) {
