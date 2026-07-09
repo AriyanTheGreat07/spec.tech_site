@@ -1,0 +1,178 @@
+    const LAPTOP_DATA = [
+      {
+        "id": 1,
+        "slug": "zenbook-pro-16",
+        "name": "ZenBook Pro 16",
+        "brand": "ASUS",
+        "category": "creator",
+        "price": 2299,
+        "currency": "$",
+        "cpu": "Intel Core Ultra 9 285H",
+        "ram": "32GB LPDDR5X",
+        "storage": "1TB NVMe SSD",
+        "display": "16\" OLED 4K (3840x2400) 120Hz",
+        "gpu": "NVIDIA RTX 4070 Laptop 8GB",
+        "battery": "96Wh, up to 12h",
+        "weight": "1.9 kg",
+        "tags": ["OLED", "4K", "RTX", "creator"],
+        "description": "The ZenBook Pro 16 is a powerhouse for creators and professionals. With a stunning 4K OLED display, Intel Core Ultra 9 processor, and RTX 4070 graphics, it handles 8K video editing, 3D rendering, and AI workloads with ease. The 96Wh battery keeps you going all day.",
+        "sources": [
+          { "name": "ASUS official", "url": "https://www.asus.com/laptops/zenbook-pro-16/" },
+          { "name": "TechRadar review", "url": "https://www.techradar.com/reviews/asus-zenbook-pro-16" }
+        ],
+        "where_to_buy": [
+          { "name": "Amazon", "url": "https://www.amazon.com/dp/B0XYZ" },
+          { "name": "Best Buy", "url": "https://www.bestbuy.com/site/zenbook-pro-16" },
+          { "name": "ASUS Store", "url": "https://store.asus.com/zenbook-pro-16" }
+        ],
+        "photos": [
+          "https://images.unsplash.com/photo-1593642702909-dec73df255d7?w=400&h=300&fit=crop",
+          "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=300&fit=crop",
+          "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=400&h=300&fit=crop"
+        ],
+        "personal_tests": {
+          "owned": true,
+          "purchase_date": "2025-11-15",
+          "benchmarks": {
+            "Cinebench R24 (multi)": 1860,
+            "Cinebench R24 (single)": 132,
+            "Geekbench 6 (multi)": 18450,
+            "Geekbench 6 (single)": 2950,
+            "3DMark Time Spy": 12800,
+            "SSD read (MB/s)": 7100,
+            "SSD write (MB/s)": 6800
+          },
+          "camera_tests": {
+            "Webcam": "1080p IR, good low-light performance, auto-framing works well.",
+            "External camera (Sony A7IV)": "Tested via HDMI capture — no latency issues, great for streaming."
+          },
+          "notes": "The OLED panel is incredible for colour work. Fan noise is noticeable under full load but acceptable. Battery life ~8h with mixed use."
+        }
+      },
+      {
+        "id": 2,
+        "slug": "macbook-pro-16",
+        "name": "MacBook Pro 16",
+        "brand": "Apple",
+        "category": "creator",
+        "price": 2499,
+        "currency": "$",
+        "cpu": "Apple M4 Pro (14-core)",
+        "ram": "36GB Unified",
+        "storage": "1TB SSD",
+        "display": "16.2\" Mini-LED 3456x2234 120Hz ProMotion",
+        "gpu": "Integrated 20-core GPU",
+        "battery": "100Wh, up to 24h",
+        "weight": "2.15 kg",
+        "tags": ["Mini-LED", "ProMotion", "M4", "creator"],
+        "description": "The MacBook Pro 16 with M4 Pro is a beast for creative professionals. The Mini-LED display with ProMotion is stunning, and the M4 Pro handles 8K video, 3D modelling, and software development effortlessly. Battery life is unmatched.",
+        "sources": [
+          { "name": "Apple official", "url": "https://www.apple.com/macbook-pro-16/" },
+          { "name": "The Verge review", "url": "https://www.theverge.com/macbook-pro-16-review" }
+        ],
+        "where_to_buy": [
+          { "name": "Apple Store", "url": "https://www.apple.com/shop/macbook-pro-16" },
+          { "name": "Amazon", "url": "https://www.amazon.com/dp/ABC123" }
+        ],
+        "photos": [
+          "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop",
+          "https://images.unsplash.com/photo-1537498425277-c283d32ef9e0?w=400&h=300&fit=crop"
+        ],
+        "personal_tests": {
+          "owned": false,
+          "benchmarks": {
+            "Cinebench R24 (multi)": 1750,
+            "Cinebench R24 (single)": 145,
+            "Geekbench 6 (multi)": 21500,
+            "Geekbench 6 (single)": 3900
+          },
+          "camera_tests": {
+            "Webcam": "1080p FaceTime HD, decent in good light, struggles in low light."
+          },
+          "notes": "Not personally owned — based on extensive testing at Apple Store. Very quiet, excellent battery."
+        }
+      },
+      {
+        "id": 3,
+        "slug": "rog-zephyrus-g16",
+        "name": "ROG Zephyrus G16",
+        "brand": "ASUS",
+        "category": "gaming",
+        "price": 1899,
+        "currency": "$",
+        "cpu": "AMD Ryzen AI 9 HX 370",
+        "ram": "32GB LPDDR5X",
+        "storage": "2TB NVMe SSD",
+        "display": "16\" 2560x1600 240Hz IPS",
+        "gpu": "NVIDIA RTX 5070 Laptop 12GB",
+        "battery": "90Wh, up to 10h",
+        "weight": "1.85 kg",
+        "tags": ["240Hz", "gaming", "Ryzen AI"],
+        "description": "The ROG Zephyrus G16 is a gaming laptop that doesn't compromise. With AMD's new Ryzen AI 9 processor and RTX 5070 graphics, it crushes modern games at high settings. The 240Hz display is buttery smooth, and it's surprisingly thin.",
+        "sources": [
+          { "name": "ROG official", "url": "https://rog.asus.com/laptops/zephyrus-g16/" }
+        ],
+        "where_to_buy": [
+          { "name": "Best Buy", "url": "https://www.bestbuy.com/rog-zephyrus-g16" },
+          { "name": "Amazon", "url": "https://www.amazon.com/rog-zephyrus-g16" }
+        ],
+        "photos": [
+          "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=400&h=300&fit=crop"
+        ],
+        "personal_tests": {
+          "owned": true,
+          "purchase_date": "2026-01-20",
+          "benchmarks": {
+            "Cinebench R24 (multi)": 1920,
+            "Cinebench R24 (single)": 128,
+            "3DMark Time Spy": 14200,
+            "Cyberpunk 2077 (ultra, 1440p)": 82,
+            "CS2 (low, 1080p)": 420
+          },
+          "camera_tests": {
+            "Webcam": "1080p, decent but noisy in low light. External camera recommended for streaming."
+          },
+          "notes": "Excellent gaming performance. Fans get loud but cooling is effective. Battery life ~6h gaming, ~10h light use."
+        }
+      },
+      {
+        "id": 4,
+        "slug": "thinkpad-x1-carbon",
+        "name": "ThinkPad X1 Carbon Gen 13",
+        "brand": "Lenovo",
+        "category": "ultrabook",
+        "price": 1599,
+        "currency": "$",
+        "cpu": "Intel Core Ultra 7 265U",
+        "ram": "16GB LPDDR5X",
+        "storage": "512GB SSD",
+        "display": "14\" 2880x1800 OLED 120Hz",
+        "gpu": "Integrated Intel Arc",
+        "battery": "57Wh, up to 18h",
+        "weight": "1.08 kg",
+        "tags": ["OLED", "ultralight", "business"],
+        "description": "The ThinkPad X1 Carbon is the ultimate business ultrabook. At just 1.08kg, it's incredibly portable. The 2.8K OLED display is stunning, and the battery lasts all day. The keyboard is legendary, and it's built like a tank.",
+        "sources": [
+          { "name": "Lenovo official", "url": "https://www.lenovo.com/thinkpad-x1-carbon" }
+        ],
+        "where_to_buy": [
+          { "name": "Lenovo Store", "url": "https://www.lenovo.com/thinkpad-x1-carbon" }
+        ],
+        "photos": [
+          "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=400&h=300&fit=crop"
+        ],
+        "personal_tests": {
+          "owned": false,
+          "benchmarks": {
+            "Cinebench R24 (multi)": 850,
+            "Cinebench R24 (single)": 115,
+            "Geekbench 6 (multi)": 11200,
+            "Geekbench 6 (single)": 2450
+          },
+          "camera_tests": {
+            "Webcam": "1080p, excellent with AI enhancement. Good for video calls."
+          },
+          "notes": "Tested briefly at a Lenovo event. Very responsive, incredible keyboard, and the OLED screen is gorgeous."
+        }
+      }
+    ];
