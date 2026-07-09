@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>spec.tech — TVs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #080b10;
+      color: #eef2f6;
+      line-height: 1.5;
+      padding: 1.8rem 1.5rem 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* header */
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 0 1.2rem;
+      border-bottom: 1px solid #262e38;
+      margin-bottom: 2.2rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 800;
+      font-size: 2rem;
+      letter-spacing: -0.03em;
+    }
+    .logo i { color: #6c8cff; font-size: 2.2rem; }
+    .logo span {
+      background: linear-gradient(145deg, #c4d4ff, #6c8cff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.2rem 2rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    .nav-links a {
+      color: #b0bccf;
+      text-decoration: none;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-links a i { color: #5a6b82; font-size: 0.85rem; }
+    .nav-links a:hover { color: #ffffff; }
+    .nav-links a:hover i { color: #8ca4ff; }
+    .nav-cta {
+      background: #6c8cff;
+      color: #0b0d10 !important;
+      padding: 0.4rem 1.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      gap: 6px;
+      transition: 0.15s;
+    }
+    .nav-cta i { color: #0b0d10 !important; }
+    .nav-cta:hover {
+      background: #7f9bff;
+      transform: scale(0.97);
+      color: #0b0d10 !important;
+    }
+
+    /* page header */
+    .page-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      gap: 1rem;
+    }
+    .page-header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .page-header h1 i { color: #6c8cff; font-size: 2rem; }
+    .page-header .sub { color: #99adc9; font-size: 0.95rem; font-weight: 400; }
+    .breadcrumb { color: #6f83a0; font-size: 0.8rem; }
+    .breadcrumb a { color: #8ba0c0; text-decoration: none; }
+    .breadcrumb a:hover { color: #b7cbff; }
+
+    /* search & filter */
+    .search-section {
+      background: #11181f;
+      border-radius: 40px;
+      padding: 1.2rem 1.8rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border: 1px solid #28313d;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: #1a232e;
+      border-radius: 60px;
+      padding: 0.2rem 0.2rem 0.2rem 1.5rem;
+      flex: 1 1 240px;
+      border: 1px solid #2f3a4a;
+    }
+    .search-box i { color: #6f7d8f; font-size: 0.9rem; }
+    .search-box input {
+      background: transparent;
+      border: none;
+      padding: 0.7rem 0.8rem;
+      font-size: 0.9rem;
+      width: 100%;
+      color: #eef2f6;
+      outline: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .search-box input::placeholder { color: #5a6f89; }
+    .search-box button {
+      background: #6c8cff;
+      border: none;
+      border-radius: 40px;
+      padding: 0.5rem 1.4rem;
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: #0b0d10;
+      cursor: pointer;
+      transition: 0.15s;
+      font-family: 'Inter', sans-serif;
+      white-space: nowrap;
+    }
+    .search-box button:hover { background: #7f9bff; transform: scale(0.97); }
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.9rem;
+      align-items: center;
+    }
+    .filter-tabs span {
+      color: #8fa3be;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-right: 0.2rem;
+    }
+    .filter-tabs a {
+      color: #b8c8de;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.25rem 0.8rem;
+      border-radius: 30px;
+      transition: 0.1s;
+      background: transparent;
+      border: 1px solid transparent;
+    }
+    .filter-tabs a:hover,
+    .filter-tabs a.active {
+      background: #26313f;
+      border-color: #3d4b60;
+      color: white;
+    }
+    .filter-tabs a i { margin-right: 4px; font-size: 0.65rem; color: #6a7a90; }
+
+    /* grid */
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: -0.01em;
+      color: #d0dcee;
+    }
+    .section-title i { color: #6c8cff; font-size: 1.2rem; }
+    .device-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 3rem;
+    }
+    .device-card {
+      background: #121a22;
+      border-radius: 28px;
+      padding: 1.6rem 1.4rem 1.4rem;
+      border: 1px solid #262f3b;
+      transition: 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .device-card:hover {
+      background: #1b232c;
+      border-color: #3d4857;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.7);
+    }
+    .card-icon { font-size: 2rem; color: #7b93e6; margin-bottom: 0.4rem; }
+    .device-card h3 {
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: -0.01em;
+      color: #f0f4fc;
+      margin-bottom: 0.1rem;
+    }
+    .device-card .sub {
+      color: #97a4b9;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .device-card .sub i { margin-right: 2px; color: #5d6e84; }
+    .spec-tag {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.5rem;
+      margin: 0.4rem 0 0.9rem;
+    }
+    .spec-tag span {
+      background: #1a2532;
+      padding: 0.2rem 0.7rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #c8d2e2;
+      border: 1px solid #2f3a48;
+    }
+    .card-footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #262f3b;
+      padding-top: 0.9rem;
+    }
+    .card-footer .price {
+      font-weight: 600;
+      color: #c6d2e8;
+      font-size: 0.9rem;
+    }
+    .card-footer .price i { color: #7f97e0; margin-right: 4px; font-size: 0.7rem; }
+    .btn-compare {
+      background: transparent;
+      border: 1px solid #384353;
+      color: #bcc8dd;
+      padding: 0.25rem 0.9rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.15s;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .btn-compare i { font-size: 0.6rem; }
+    .btn-compare:hover {
+      background: #2d3a4b;
+      border-color: #5b70a0;
+      color: white;
+    }
+    .owned-badge {
+      display: inline-block;
+      background: #1f3a2a;
+      color: #7bc9a0;
+      padding: 0.1rem 0.5rem;
+      border-radius: 30px;
+      font-size: 0.55rem;
+      font-weight: 600;
+      border: 1px solid #2d5a3d;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+
+    /* loading */
+    .loading-placeholder {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem 0;
+      color: #8fa3be;
+    }
+    .loading-placeholder i { font-size: 2rem; margin-bottom: 0.8rem; display: block; color: #6c8cff; }
+
+    /* compare section */
+    .compare-section {
+      background: #11181f;
+      border-radius: 32px;
+      padding: 1.8rem 2rem;
+      margin-top: 0.5rem;
+      border: 1px solid #29313c;
+    }
+    .compare-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+    }
+    .compare-header h2 {
+      font-weight: 600;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .compare-header h2 i { color: #6c8cff; }
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.8rem;
+      font-size: 0.85rem;
+    }
+    .compare-item {
+      background: #1c2530;
+      padding: 0.7rem 1rem;
+      border-radius: 20px;
+      display: flex;
+      justify-content: space-between;
+      border: 1px solid #2b3645;
+    }
+    .compare-item .label { color: #9aabbf; }
+    .compare-item .value { font-weight: 500; color: #e0e8f2; }
+    .compare-item .value i { margin-right: 4px; color: #6f8aff; font-size: 0.7rem; }
+
+    /* footer */
+    .footer-detailed {
+      margin-top: 3.5rem;
+      border-top: 1px solid #222c38;
+      padding: 2.8rem 0 1.8rem;
+      background: #0b1017;
+      border-radius: 32px 32px 0 0;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 2.5rem 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-brand h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.6rem;
+    }
+    .footer-brand h3 i { color: #6c8cff; }
+    .footer-brand h3 span {
+      background: linear-gradient(145deg, #c4d4ff, #6c8cff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .footer-brand p { color: #9aadc7; font-size: 0.9rem; max-width: 280px; line-height: 1.6; margin-bottom: 1.2rem; }
+    .social-icons { display: flex; gap: 0.8rem; }
+    .social-icons a {
+      background: #1b2532;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #b6c7e0;
+      font-size: 0.9rem;
+      transition: 0.15s;
+      text-decoration: none;
+      border: 1px solid #2d3a4b;
+    }
+    .social-icons a:hover { background: #2d3d54; color: white; border-color: #6c8cff; }
+    .footer-col h4 {
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #a0b3cd;
+      margin-bottom: 1.2rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .footer-col ul li a {
+      color: #8fa3be;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .footer-col ul li a i { font-size: 0.6rem; color: #5d7392; transition: 0.15s; }
+    .footer-col ul li a:hover { color: #e0eaf9; }
+    .footer-col ul li a:hover i { color: #8aa3e6; transform: translateX(3px); }
+    .footer-newsletter p { color: #9aadc7; font-size: 0.9rem; margin-bottom: 0.8rem; }
+    .newsletter-box {
+      display: flex;
+      background: #141d28;
+      border-radius: 60px;
+      border: 1px solid #2a3647;
+      overflow: hidden;
+      max-width: 300px;
+    }
+    .newsletter-box input {
+      background: transparent;
+      border: none;
+      padding: 0.6rem 1rem;
+      font-size: 0.8rem;
+      color: #eef2f6;
+      outline: none;
+      flex: 1;
+      font-family: 'Inter', sans-serif;
+      min-width: 0;
+    }
+    .newsletter-box input::placeholder { color: #5b6f89; }
+    .newsletter-box button {
+      background: #6c8cff;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      font-weight: 600;
+      font-size: 0.7rem;
+      color: #0b0d10;
+      cursor: pointer;
+      transition: 0.15s;
+      font-family: 'Inter', sans-serif;
+      white-space: nowrap;
+    }
+    .newsletter-box button:hover { background: #7f9bff; }
+    .footer-bottom {
+      border-top: 1px solid #1f2a37;
+      padding-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.8rem;
+      color: #6a7d98;
+    }
+    .footer-bottom-links a {
+      color: #7a8da8;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      transition: 0.15s;
+    }
+    .footer-bottom-links a:hover { color: #b7cbff; }
+
+    @media (max-width: 850px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .footer-brand { grid-column: 1 / -1; }
+      .compare-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 550px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 1.8rem; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .footer-bottom-links a { margin-left: 0; margin-right: 1.2rem; }
+      .top-bar { flex-direction: column; align-items: stretch; gap: 0.8rem; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .search-section { flex-direction: column; align-items: stretch; padding: 1.2rem; }
+      .page-header h1 { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- header -->
+  <header class="top-bar">
+    <div class="logo">
+      <i class="fas fa-microchip"></i>
+      <span>spec.tech</span>
+    </div>
+    <div class="nav-links">
+      <a href="#"><i class="fas fa-laptop"></i> Laptops</a>
+      <a href="#"><i class="fas fa-tv"></i> TVs</a>
+      <a href="#"><i class="fas fa-tablet-alt"></i> Tablets</a>
+      <a href="#"><i class="fas fa-vr-cardboard"></i> VR</a>
+      <a href="#"><i class="fas fa-gamepad"></i> Consoles</a>
+      <a href="#"><i class="fas fa-desktop"></i> PCs</a>
+      <a href="#" class="nav-cta"><i class="fas fa-arrow-right"></i> Compare</a>
+    </div>
+  </header>
+
+  <!-- page header -->
+  <div class="page-header">
+    <div>
+      <h1><i class="fas fa-tv"></i> TVs</h1>
+      <div class="sub">Compare specs, filters, and find your perfect TV.</div>
+    </div>
+    <div class="breadcrumb">
+      <a href="#">Home</a> <i class="fas fa-chevron-right" style="font-size:0.5rem; margin:0 6px; color:#475769;"></i>
+      <span style="color:#b0c4de;">TVs</span>
+    </div>
+  </div>
+
+  <!-- search & filter -->
+  <div class="search-section">
+    <div class="search-box">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Search TVs... (e.g. LG OLED, Samsung Neo QLED)">
+      <button id="searchBtn"><i class="fas fa-arrow-right"></i> Search</button>
+    </div>
+    <div class="filter-tabs">
+      <span><i class="fas fa-sliders-h"></i> Filter:</span>
+      <a href="#" class="active" data-filter="all">All</a>
+      <a href="#" data-filter="oled"><i class="fas fa-circle"></i> OLED</a>
+      <a href="#" data-filter="qled"><i class="fas fa-circle"></i> QLED</a>
+      <a href="#" data-filter="led"><i class="fas fa-circle"></i> LED</a>
+    </div>
+  </div>
+
+  <!-- grid -->
+  <div class="section-title">
+    <i class="fas fa-tv"></i> <span id="gridTitle">TVs</span>
+  </div>
+  <div class="device-grid" id="deviceGrid">
+    <div class="loading-placeholder">
+      <i class="fas fa-spinner fa-pulse"></i>
+      loading devices from /api/tv_data.json...
+    </div>
+  </div>
+
+  <!-- compare section -->
+  <div class="compare-section">
+    <div class="compare-header">
+      <h2><i class="fas fa-arrows-left-right"></i> quick compare</h2>
+      <span style="color:#7b8da5; font-size:0.8rem;"><i class="far fa-clock"></i> 2 devices selected</span>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-item"><span class="label">Model</span><span class="value">LG G4 OLED</span></div>
+      <div class="compare-item"><span class="label">Model</span><span class="value">Samsung S95D</span></div>
+      <div class="compare-item"><span class="label">Display</span><span class="value">65" OLED 4K 144Hz</span></div>
+      <div class="compare-item"><span class="label">Display</span><span class="value">65" QD-OLED 4K 144Hz</span></div>
+      <div class="compare-item"><span class="label">HDR</span><span class="value">Dolby Vision, HDR10</span></div>
+      <div class="compare-item"><span class="label">HDR</span><span class="value">HDR10+, HDR10</span></div>
+      <div class="compare-item"><span class="label">OS</span><span class="value">webOS 24</span></div>
+      <div class="compare-item"><span class="label">OS</span><span class="value">Tizen OS</span></div>
+      <div class="compare-item"><span class="label">Price</span><span class="value">$2,499</span></div>
+      <div class="compare-item"><span class="label">Price</span><span class="value">$2,199</span></div>
+    </div>
+    <div style="margin-top: 1.2rem; font-size: 0.85rem; color: #68778e; display: flex; gap: 1.2rem; flex-wrap: wrap;">
+      <span><i class="fas-regular fa-square-check" style="color:#6c8cff;"></i>  add more devices</span>
+      <span><i class="fas-regular fa-chart-simple"></i>  full comparison</span>
+      <span><i class="fas-regular fa-share-nodes"></i>  share</span>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer class="footer-detailed">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3><i class="fas fa-microchip"></i><span>spec.tech</span></h3>
+        <p>Modern device specs for laptops, TVs, VR, consoles, and more. Built for enthusiasts.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-discord"></i></a>
+          <a href="#"><i class="fab fa-reddit-alien"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Laptops</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> TVs</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Tablets</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> VR headsets</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Consoles</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Desktops</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Help center</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> API docs</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Report issue</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Suggest a device</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-newsletter">
+        <h4>Stay updated</h4>
+        <p>Get the latest specs and reviews in your inbox.</p>
+        <div class="newsletter-box">
+          <input type="email" placeholder="Email address">
+          <button><i class="fas fa-paper-plane"></i></button>
+        </div>
+        <p style="font-size: 0.7rem; color: #5f748f; margin-top: 0.8rem;">
+          <i class="fas fa-lock" style="font-size: 0.6rem;"></i> No spam, unsubscribe anytime.
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span><i class="far fa-copyright"></i> 2026 spec.tech — all specs, one place.</span>
+      <div class="footer-bottom-links">
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Careers</a>
+        <a href="#">Contact</a>
+        <a href="#"><i class="fas fa-arrow-up" style="margin-left: 0.5rem;"></i></a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  (function() {
+    // ----- DOM refs -----
+    const grid = document.getElementById('deviceGrid');
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const filterLinks = document.querySelectorAll('.filter-tabs a');
+    const gridTitle = document.getElementById('gridTitle');
+
+    let allDevices = [];
+    let currentFilter = 'all';
+    let currentSearch = '';
+
+    // ----- fetch data from /api/tv_data.json -----
+    function fetchDevices() {
+      // In production, use this actual fetch:
+      return fetch('/api/tv_data.json')
+        .then(res => {
+          if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+          return res.json();
+        })
+        .then(data => {
+          // Handle both array and object with tvs property
+          if (Array.isArray(data)) {
+            return data;
+          } else if (data.tvs && Array.isArray(data.tvs)) {
+            return data.tvs;
+          } else {
+            throw new Error('Invalid data format: expected array or object with "tvs" array');
+          }
+        });
+    }
+
+    // ----- render cards -----
+    function renderDevices(devices) {
+      if (!devices || devices.length === 0) {
+        grid.innerHTML = `<div class="loading-placeholder" style="grid-column:1/-1; padding:2rem 0;">
+          <i class="fas fa-search" style="font-size:1.8rem; color:#6c8cff; display:block; margin-bottom:0.6rem;"></i>
+          No TVs found. Try adjusting your search or filter.
+        </div>`;
+        return;
+      }
+
+      let html = '';
+      devices.forEach(d => {
+        const tagsHtml = d.tags ? d.tags.map(t => `<span>${t}</span>`).join('') : '';
+        const priceStr = (d.currency || '$') + (d.price || 0).toLocaleString();
+        const ownedBadge = d.personal_tests?.owned ? 
+          `<span class="owned-badge"><i class="fas fa-check-circle"></i> owned</span>` : '';
+        
+        html += `
+          <div class="device-card" data-slug="${d.slug || d.id}">
+            <div class="card-icon"><i class="fas fa-tv"></i></div>
+            <h3>${d.name || 'Unknown Device'} ${ownedBadge}</h3>
+            <div class="sub"><i class="fas fa-display"></i> ${d.display || 'N/A'} · ${d.resolution || 'N/A'}</div>
+            <div class="spec-tag">
+              <span>${d.size || 'N/A'}</span>
+              <span>${d.hdr || 'N/A'}</span>
+              <span>${d.refresh_rate || 'N/A'}</span>
+            </div>
+            <div class="card-footer">
+              <span class="price"><i class="fas fa-tag"></i> ${priceStr}</span>
+              <button class="btn-compare" data-compare-id="${d.id}"><i class="fas fa-arrows-left-right"></i> compare</button>
+            </div>
+          </div>
+        `;
+      });
+      grid.innerHTML = html;
+
+      // card click → navigate to detail page
+      document.querySelectorAll('.device-card').forEach(card => {
+        card.addEventListener('click', function(e) {
+          if (e.target.closest('.btn-compare')) return;
+          const slug = this.dataset.slug;
+          // Navigate to detail page
+          window.location.href = `/tvs/${slug}.html`;
+        });
+      });
+
+      // compare buttons
+      document.querySelectorAll('.btn-compare').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const id = this.dataset.compareId;
+          alert(`➕ Added TV ID ${id} to comparison (demo)`);
+        });
+      });
+    }
+
+    // ----- filter + search -----
+    function getFilteredDevices() {
+      let result = allDevices.slice();
+
+      if (currentFilter !== 'all') {
+        result = result.filter(d => d.category === currentFilter);
+      }
+
+      if (currentSearch.trim() !== '') {
+        const q = currentSearch.trim().toLowerCase();
+        result = result.filter(d =>
+          (d.name || '').toLowerCase().includes(q) ||
+          (d.brand || '').toLowerCase().includes(q) ||
+          (d.display || '').toLowerCase().includes(q) ||
+          (d.tags || []).some(t => t.toLowerCase().includes(q))
+        );
+      }
+
+      return result;
+    }
+
+    function updateGrid() {
+      const filtered = getFilteredDevices();
+      renderDevices(filtered);
+      let label = 'TVs';
+      if (currentFilter !== 'all') label = currentFilter.toUpperCase() + ' TVs';
+      if (currentSearch.trim()) label = `“${currentSearch.trim()}” results`;
+      gridTitle.textContent = label;
+    }
+
+    // ----- event listeners -----
+    filterLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        filterLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+        currentFilter = this.dataset.filter || 'all';
+        updateGrid();
+      });
+    });
+
+    function performSearch() {
+      currentSearch = searchInput.value;
+      updateGrid();
+    }
+
+    searchBtn.addEventListener('click', performSearch);
+    searchInput.addEventListener('keyup', function(e) {
+      if (e.key === 'Enter') performSearch();
+    });
+
+    // ----- init -----
+    grid.innerHTML = `<div class="loading-placeholder"><i class="fas fa-spinner fa-pulse"></i> loading devices from /api/tv_data.json...</div>`;
+
+    fetchDevices()
+      .then(devices => {
+        allDevices = devices;
+        renderDevices(devices);
+        gridTitle.textContent = 'TVs';
+      })
+      .catch(error => {
+        console.error('Error loading devices:', error);
+        grid.innerHTML = `
+          <div class="loading-placeholder" style="grid-column:1/-1; padding:2rem 0; color:#e06c7c;">
+            <i class="fas fa-exclamation-triangle" style="font-size:1.8rem; display:block; margin-bottom:0.8rem;"></i>
+            Failed to load devices from /api/tv_data.json
+            <br><span style="font-size:0.85rem; color:#8fa3be; margin-top:0.5rem; display:inline-block;">${error.message}</span>
+            <br><span style="font-size:0.8rem; color:#6f83a0; margin-top:0.5rem; display:inline-block;">Make sure the file exists at /api/tv_data.json</span>
+          </div>
+        `;
+      });
+
+    window.__allDevices = allDevices;
+  })();
+</script>
+</body>
+</html>
