@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>spec.tech — modern specs index</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #080b10;
+      color: #eef2f6;
+      line-height: 1.5;
+      padding: 1.8rem 1.5rem 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ----- header / nav (detailed) ----- */
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 0 1.2rem;
+      border-bottom: 1px solid #262e38;
+      margin-bottom: 3rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 800;
+      font-size: 2rem;
+      letter-spacing: -0.03em;
+    }
+
+    .logo i {
+      color: #6c8cff;
+      font-size: 2.2rem;
+    }
+
+    .logo span {
+      background: linear-gradient(145deg, #c4d4ff, #6c8cff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.2rem 2rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: #b0bccf;
+      text-decoration: none;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-links a i {
+      color: #5a6b82;
+      font-size: 0.85rem;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    .nav-links a:hover i {
+      color: #8ca4ff;
+    }
+
+    .nav-cta {
+      background: #6c8cff;
+      color: #0b0d10 !important;
+      padding: 0.4rem 1.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      gap: 6px;
+      transition: 0.15s;
+    }
+
+    .nav-cta i {
+      color: #0b0d10 !important;
+    }
+
+    .nav-cta:hover {
+      background: #7f9bff;
+      transform: scale(0.97);
+      color: #0b0d10 !important;
+    }
+
+    /* ----- hero / welcome ----- */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      margin-bottom: 3.5rem;
+      padding: 0.5rem 0;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #1a232e;
+      border: 1px solid #2d3846;
+      border-radius: 60px;
+      padding: 0.3rem 1rem 0.3rem 0.8rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #b2c3db;
+      width: fit-content;
+    }
+
+    .hero-badge i {
+      color: #6c8cff;
+      font-size: 0.7rem;
+    }
+
+    .hero h1 {
+      font-size: 3.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      max-width: 900px;
+    }
+
+    .hero h1 .highlight {
+      background: linear-gradient(145deg, #b7ccff, #6c8cff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #b2c2d9;
+      max-width: 680px;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.2rem 1.8rem;
+      margin-top: 0.8rem;
+    }
+
+    .btn-primary {
+      background: #6c8cff;
+      border: none;
+      padding: 0.8rem 2.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #0b0d10;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: 0.15s;
+      font-family: 'Inter', sans-serif;
+      text-decoration: none;
+    }
+
+    .btn-primary i {
+      font-size: 0.9rem;
+    }
+
+    .btn-primary:hover {
+      background: #7f9bff;
+      transform: scale(0.97);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #394758;
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 1rem;
+      color: #d0dcee;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: 0.15s;
+      font-family: 'Inter', sans-serif;
+      text-decoration: none;
+    }
+
+    .btn-outline i {
+      color: #6f86b0;
+    }
+
+    .btn-outline:hover {
+      background: #1f2938;
+      border-color: #5d72a0;
+      color: white;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      margin-top: 0.5rem;
+      border-top: 1px solid #262f3b;
+      padding-top: 1.8rem;
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .stat-number {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: #e4ebf7;
+    }
+
+    .stat-label {
+      color: #859bb3;
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
+
+    /* ----- category buttons (featured) ----- */
+    .category-ribbon {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.2rem;
+      margin: 2rem 0 2.8rem;
+      background: #11181f;
+      padding: 1.2rem 1.8rem;
+      border-radius: 80px;
+      border: 1px solid #28313d;
+      justify-content: center;
+    }
+
+    .category-ribbon a {
+      color: #c8d4e8;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 40px;
+      transition: 0.1s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .category-ribbon a i {
+      color: #5d7392;
+      font-size: 0.8rem;
+    }
+
+    .category-ribbon a:hover {
+      background: #25303e;
+      color: white;
+    }
+
+    .category-ribbon a:hover i {
+      color: #8aa3e6;
+    }
+
+    /* ----- info cards (what we do) ----- */
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 2.8rem 0 1.8rem;
+    }
+
+    .section-head i {
+      color: #6c8cff;
+      font-size: 1.8rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 3rem;
+    }
+
+    .info-card {
+      background: #121a22;
+      border-radius: 32px;
+      padding: 1.8rem 1.5rem;
+      border: 1px solid #252f3b;
+      transition: 0.2s;
+    }
+
+    .info-card:hover {
+      background: #19232e;
+      border-color: #3d4a5c;
+      transform: translateY(-3px);
+    }
+
+    .info-card i {
+      font-size: 2rem;
+      color: #6c8cff;
+      margin-bottom: 0.8rem;
+    }
+
+    .info-card h3 {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .info-card p {
+      color: #a4b5cc;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* ----- DETAILED FOOTER ----- */
+    .footer-detailed {
+      margin-top: 4rem;
+      border-top: 1px solid #222c38;
+      padding: 2.8rem 0 1.8rem;
+      background: #0b1017;
+      border-radius: 32px 32px 0 0;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 2.5rem 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .footer-brand h3 i {
+      color: #6c8cff;
+    }
+
+    .footer-brand h3 span {
+      background: linear-gradient(145deg, #c4d4ff, #6c8cff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer-brand p {
+      color: #9aadc7;
+      font-size: 0.9rem;
+      max-width: 280px;
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .social-icons a {
+      background: #1b2532;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #b6c7e0;
+      font-size: 0.9rem;
+      transition: 0.15s;
+      text-decoration: none;
+      border: 1px solid #2d3a4b;
+    }
+
+    .social-icons a:hover {
+      background: #2d3d54;
+      color: white;
+      border-color: #6c8cff;
+    }
+
+    .footer-col h4 {
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #a0b3cd;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .footer-col ul li a {
+      color: #8fa3be;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-col ul li a i {
+      font-size: 0.6rem;
+      color: #5d7392;
+      transition: 0.15s;
+    }
+
+    .footer-col ul li a:hover {
+      color: #e0eaf9;
+    }
+
+    .footer-col ul li a:hover i {
+      color: #8aa3e6;
+      transform: translateX(3px);
+    }
+
+    .footer-newsletter p {
+      color: #9aadc7;
+      font-size: 0.9rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .newsletter-box {
+      display: flex;
+      background: #141d28;
+      border-radius: 60px;
+      border: 1px solid #2a3647;
+      overflow: hidden;
+      max-width: 300px;
+    }
+
+    .newsletter-box input {
+      background: transparent;
+      border: none;
+      padding: 0.6rem 1rem;
+      font-size: 0.8rem;
+      color: #eef2f6;
+      outline: none;
+      flex: 1;
+      font-family: 'Inter', sans-serif;
+      min-width: 0;
+    }
+
+    .newsletter-box input::placeholder {
+      color: #5b6f89;
+    }
+
+    .newsletter-box button {
+      background: #6c8cff;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      font-weight: 600;
+      font-size: 0.7rem;
+      color: #0b0d10;
+      cursor: pointer;
+      transition: 0.15s;
+      font-family: 'Inter', sans-serif;
+      white-space: nowrap;
+    }
+
+    .newsletter-box button:hover {
+      background: #7f9bff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #1f2a37;
+      padding-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.8rem;
+      color: #6a7d98;
+    }
+
+    .footer-bottom-links a {
+      color: #7a8da8;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      transition: 0.15s;
+    }
+
+    .footer-bottom-links a:hover {
+      color: #b7cbff;
+    }
+
+    /* responsive footer */
+    @media (max-width: 850px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .footer-bottom-links a {
+        margin-left: 0;
+        margin-right: 1.2rem;
+      }
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+      .top-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.8rem;
+      }
+      .category-ribbon {
+        border-radius: 40px;
+        padding: 1rem;
+        justify-content: flex-start;
+      }
+      .hero-stats {
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- detailed header -->
+  <header class="top-bar">
+    <div class="logo">
+      <i class="fas fa-microchip"></i>
+      <span>spec.tech</span>
+    </div>
+    <div class="nav-links">
+      <a href="#"><i class="fas fa-laptop"></i> Laptops</a>
+      <a href="#"><i class="fas fa-tv"></i> TVs</a>
+      <a href="#"><i class="fas fa-tablet-alt"></i> Tablets</a>
+      <a href="#"><i class="fas fa-vr-cardboard"></i> VR</a>
+      <a href="#"><i class="fas fa-gamepad"></i> Consoles</a>
+      <a href="#"><i class="fas fa-desktop"></i> PCs</a>
+      <a href="#" class="nav-cta"><i class="fas fa-arrow-right"></i> Compare</a>
+    </div>
+  </header>
+
+  <!-- welcome hero -->
+  <section class="hero">
+    <div class="hero-badge">
+      <i class="fas fa-bolt"></i> 2026 edition · next-gen specs
+    </div>
+    <h1>
+      The modern <span class="highlight">spec database</span> for every device
+    </h1>
+    <p>
+      Laptops, TVs, tablets, VR, consoles, PCs — compare specs, filter by features, 
+      and find your perfect device. Built for enthusiasts, by enthusiasts.
+    </p>
+    <div class="hero-actions">
+      <a href="#" class="btn-primary"><i class="fas fa-arrow-right"></i> Explore devices</a>
+      <a href="#" class="btn-outline"><i class="fas fa-arrows-left-right"></i> Start comparison</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><span class="stat-number">12k+</span> <span class="stat-label">devices</span></div>
+      <div class="stat-item"><span class="stat-number">850+</span> <span class="stat-label">brands</span></div>
+      <div class="stat-item"><span class="stat-number">4.8</span> <span class="stat-label">⭐ community rating</span></div>
+    </div>
+  </section>
+
+  <!-- category quick buttons -->
+  <div class="category-ribbon">
+    <a href="#"><i class="fas fa-laptop"></i> Laptops</a>
+    <a href="#"><i class="fas fa-tv"></i> TVs</a>
+    <a href="#"><i class="fas fa-tablet-alt"></i> Tablets</a>
+    <a href="#"><i class="fas fa-vr-cardboard"></i> VR headsets</a>
+    <a href="#"><i class="fas fa-gamepad"></i> Consoles</a>
+    <a href="#"><i class="fas fa-desktop"></i> Desktops</a>
+    <a href="#"><i class="fas fa-smartphone"></i> Phones</a>
+    <a href="#"><i class="fas fa-watch"></i> Wearables</a>
+  </div>
+
+  <!-- what we do -->
+  <div class="section-head">
+    <i class="fas fa-compass"></i> what we do
+  </div>
+  <div class="info-grid">
+    <div class="info-card">
+      <i class="fas fa-database"></i>
+      <h3>Deep specs</h3>
+      <p>Every detail, from processor to port selection. Real-world benchmarks and thermal data.</p>
+    </div>
+    <div class="info-card">
+      <i class="fas fa-arrows-left-right"></i>
+      <h3>Side-by-side</h3>
+      <p>Compare up to 5 devices across all categories. See differences at a glance.</p>
+    </div>
+    <div class="info-card">
+      <i class="fas fa-bolt"></i>
+      <h3>Modern & fast</h3>
+      <p>Dark mode, instant search, and a clean interface built for speed and clarity.</p>
+    </div>
+    <div class="info-card">
+      <i class="fas fa-users"></i>
+      <h3>Community driven</h3>
+      <p>User reviews, ratings, and crowdsourced corrections keep specs accurate.</p>
+    </div>
+  </div>
+
+  <!-- extra callout -->
+  <div style="background: #111920; border-radius: 36px; padding: 1.8rem 2.2rem; border: 1px solid #2a3442; margin: 1rem 0 2rem;">
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; justify-content: space-between;">
+      <div>
+        <div style="font-weight: 600; font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
+          <i class="fas fa-rocket" style="color:#6c8cff;"></i> beyond phones
+        </div>
+        <p style="color: #b0c2da; max-width: 600px; margin-top: 0.2rem;">
+          From gaming consoles to VR headsets — we cover the entire tech ecosystem, 
+          not just phones. One place for all your specs.
+        </p>
+      </div>
+      <a href="#" style="background: #2a3546; padding: 0.5rem 1.8rem; border-radius: 60px; text-decoration: none; color: #dae2f0; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; border: 1px solid #3e4c60;">
+        <i class="fas fa-chevron-right"></i> full catalog
+      </a>
+    </div>
+  </div>
+
+  <!-- ====== DETAILED FOOTER ====== -->
+  <footer class="footer-detailed">
+    <div class="footer-grid">
+      <!-- brand + social -->
+      <div class="footer-brand">
+        <h3><i class="fas fa-microchip"></i><span>spec.tech</span></h3>
+        <p>Modern device specs for laptops, TVs, VR, consoles, and more. Built for enthusiasts.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-discord"></i></a>
+          <a href="#"><i class="fab fa-reddit-alien"></i></a>
+        </div>
+      </div>
+
+      <!-- quick links -->
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Laptops</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> TVs</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Tablets</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> VR headsets</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Consoles</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Desktops</a></li>
+        </ul>
+      </div>
+
+      <!-- support -->
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Help center</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> API docs</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Report issue</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Suggest a device</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy policy</a></li>
+        </ul>
+      </div>
+
+      <!-- newsletter -->
+      <div class="footer-col footer-newsletter">
+        <h4>Stay updated</h4>
+        <p>Get the latest specs and reviews in your inbox.</p>
+        <div class="newsletter-box">
+          <input type="email" placeholder="Email address">
+          <button><i class="fas fa-paper-plane"></i></button>
+        </div>
+        <p style="font-size: 0.7rem; color: #5f748f; margin-top: 0.8rem;">
+          <i class="fas fa-lock" style="font-size: 0.6rem;"></i> No spam, unsubscribe anytime.
+        </p>
+      </div>
+    </div>
+
+    <!-- bottom bar -->
+    <div class="footer-bottom">
+      <span><i class="far fa-copyright"></i> 2026 spec.tech — all specs, one place.</span>
+      <div class="footer-bottom-links">
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Careers</a>
+        <a href="#">Contact</a>
+        <a href="#"><i class="fas fa-arrow-up" style="margin-left: 0.5rem;"></i></a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
